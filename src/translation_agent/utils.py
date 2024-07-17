@@ -3,13 +3,25 @@ from typing import List, Union
 
 import openai
 import tiktoken
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 from icecream import ic
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 load_dotenv()  # read local .env file
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+
+
+# client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+client = AzureOpenAI(
+    api_key=AZURE_OPENAI_API_KEY,
+    api_version="2024-02-01",
+    azure_endpoint=AZURE_OPENAI_ENDPOINT,
+)
 
 MAX_TOKENS_PER_CHUNK = (
     1000  # if text is more than this many tokens, we'll break it up into
@@ -20,7 +32,7 @@ MAX_TOKENS_PER_CHUNK = (
 def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
-    model: str = "gpt-4-turbo",
+    model: str = "az-openai-gpt4o",
     temperature: float = 0.3,
     json_mode: bool = False,
 ) -> Union[str, dict]:
@@ -84,7 +96,8 @@ def one_chunk_initial_translation(
         str: The translated text.
     """
 
-    system_message = f"You are an expert linguist, specializing in translation from {source_lang} to {target_lang}."
+    system_message = f"You are an expert linguist, specializing in translation from {
+        source_lang} to {target_lang}."
 
     translation_prompt = f"""This is an {source_lang} to {target_lang} translation, please provide the {target_lang} translation for this text. \
 Do not provide any explanations or text apart from the translation.
@@ -92,7 +105,8 @@ Do not provide any explanations or text apart from the translation.
 
 {target_lang}:"""
 
-    translation = get_completion(translation_prompt, system_message=system_message)
+    translation = get_completion(
+        translation_prompt, system_message=system_message)
 
     return translation
 
@@ -168,7 +182,8 @@ Write a list of specific, helpful and constructive suggestions for improving the
 Each suggestion should address one specific part of the translation.
 Output only the suggestions and nothing else."""
 
-    reflection = get_completion(reflection_prompt, system_message=system_message)
+    reflection = get_completion(
+        reflection_prompt, system_message=system_message)
     return reflection
 
 
@@ -193,7 +208,8 @@ def one_chunk_improve_translation(
         str: The improved translation based on the expert suggestions.
     """
 
-    system_message = f"You are an expert linguist, specializing in translation editing from {source_lang} to {target_lang}."
+    system_message = f"You are an expert linguist, specializing in translation editing from {
+        source_lang} to {target_lang}."
 
     prompt = f"""Your task is to carefully read, then edit, a translation from {source_lang} to {target_lang}, taking into
 account a list of expert suggestions and constructive criticisms.
@@ -300,7 +316,8 @@ def multichunk_initial_translation(
         List[str]: A list of translated text chunks.
     """
 
-    system_message = f"You are an expert linguist, specializing in translation from {source_lang} to {target_lang}."
+    system_message = f"You are an expert linguist, specializing in translation from {
+        source_lang} to {target_lang}."
 
     translation_prompt = """Your task is to provide a professional translation from {source_lang} to {target_lang} of PART of a text.
 
@@ -328,7 +345,7 @@ Output only the translation of the portion you are asked to translate, and nothi
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1 :])
+            + "".join(source_text_chunks[i + 1:])
         )
 
         prompt = translation_prompt.format(
@@ -439,7 +456,7 @@ Output only the suggestions and nothing else."""
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1 :])
+            + "".join(source_text_chunks[i + 1:])
         )
         if country != "":
             prompt = reflection_prompt.format(
@@ -486,7 +503,8 @@ def multichunk_improve_translation(
         List[str]: The improved translation of each chunk.
     """
 
-    system_message = f"You are an expert linguist, specializing in translation editing from {source_lang} to {target_lang}."
+    system_message = f"You are an expert linguist, specializing in translation editing from {
+        source_lang} to {target_lang}."
 
     improvement_prompt = """Your task is to carefully read, then improve, a translation from {source_lang} to {target_lang}, taking into
 account a set of expert suggestions and constructive criticisms. Below, the source text, initial translation, and expert suggestions are provided.
@@ -533,7 +551,7 @@ Output only the new translation of the indicated part and nothing else."""
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1 :])
+            + "".join(source_text_chunks[i + 1:])
         )
 
         prompt = improvement_prompt.format(
