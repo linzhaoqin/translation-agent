@@ -3,19 +3,32 @@ import os
 import translation_agent as ta
 
 
+def save_translation(translation, output_file):
+    """Save translation to file."""
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(f"{translation}")
+
+
 if __name__ == "__main__":
-    source_lang, target_lang, country = "English", "Chinese", "Mexico"
+    # Configuration
+    source_lang = "English"
+    target_lang = "Chinese"
+    country = "China"
+    input_file = "sample-texts/en.ts"
+    output_file = "zh.ts"  # 你可以直接修改这个文件名
 
-    relative_path = "sample-texts/sample-short1.txt"
+    # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    input_path = os.path.join(script_dir, input_file)
+    output_path = os.path.join(script_dir, output_file)
 
-    full_path = os.path.join(script_dir, relative_path)
-
-    with open(full_path, encoding="utf-8") as file:
+    # Read source text
+    with open(input_path, encoding="utf-8") as file:
         source_text = file.read()
 
-    print(f"Source text:\n\n{source_text}\n------------\n")
+    print(f"Source text:\n\n{source_text}\n{'='*50}\n")
 
+    # Get translation
     translation = ta.translate(
         source_lang=source_lang,
         target_lang=target_lang,
@@ -23,4 +36,8 @@ if __name__ == "__main__":
         country=country,
     )
 
-    print(f"Translation:\n\n{translation}")
+    print(f"Translation:\n\n{translation}\n{'='*50}\n")
+
+    # Save to output file
+    save_translation(translation, output_path)
+    print(f"\nTranslation saved to: {output_path}")
