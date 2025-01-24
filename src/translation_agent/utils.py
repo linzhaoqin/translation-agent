@@ -59,6 +59,7 @@ def get_completion(
 
     # Sleep for 1 minute before each API call
     time.sleep(60)
+    print("Sleeping for 1 minute before each API call")
 
     if json_mode:
         response = client.chat.completions.create(
@@ -111,6 +112,8 @@ Do not provide any explanations or text apart from the translation.
 
     translation = get_completion(
         translation_prompt, system_message=system_message)
+    print("\nInitial translation completed")
+    print(f"Translation length: {len(translation)} characters")
 
     return translation
 
@@ -188,6 +191,9 @@ Output only the suggestions and nothing else."""
 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
+    print("\nReflection completed")
+    print(f"Generated {len(reflection.split('.'))} suggestions")
+
     return reflection
 
 
@@ -244,6 +250,8 @@ Please take into account the expert suggestions when editing the translation. Ed
 Output only the new translation and nothing else."""
 
     translation_2 = get_completion(prompt, system_message)
+    print("\nImprovement completed")
+    print(f"Final translation length: {len(translation_2)} characters")
 
     return translation_2
 

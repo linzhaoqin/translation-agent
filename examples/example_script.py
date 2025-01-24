@@ -14,8 +14,8 @@ if __name__ == "__main__":
     source_lang = "English"
     target_lang = "Chinese"
     country = "China"
-    input_file = "sample-texts/how-to-translate-images.md"
-    output_file = "how-to-translate-images-zh.md"  # 你可以直接修改这个文件名
+    input_file = "sample-texts/korean.md"
+    output_file = "korean-zh.md"  # 你可以直接修改这个文件名
 
     # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
