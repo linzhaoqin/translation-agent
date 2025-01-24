@@ -1,5 +1,6 @@
 import os
 from typing import List, Union
+import time
 
 import openai
 import tiktoken
@@ -19,7 +20,7 @@ AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 
 client = AzureOpenAI(
     api_key=AZURE_OPENAI_API_KEY,
-    api_version="2024-02-01",
+    api_version="2024-05-01-preview",
     azure_endpoint=AZURE_OPENAI_ENDPOINT,
 )
 
@@ -55,6 +56,9 @@ def get_completion(
             If json_mode is True, returns the complete API response as a dictionary.
             If json_mode is False, returns the generated text as a string.
     """
+
+    # Sleep for 1 minute before each API call
+    time.sleep(60)
 
     if json_mode:
         response = client.chat.completions.create(
