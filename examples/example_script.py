@@ -12,10 +12,10 @@ def save_translation(translation, output_file):
 if __name__ == "__main__":
     # Configuration
     source_lang = "English"
-    target_lang = "Chinese"
-    country = "China"
-    input_file = "sample-texts/japanese.md"
-    output_file = "japanese-zh.md"  # 你可以直接修改这个文件名
+    target_lang = "Spanish"
+    country = "Spain"
+    input_file = "sample-texts/how-to-translate-images.md"
+    output_file = "how-to-translate-images-es.md"  # 你可以直接修改这个文件名
 
     # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))

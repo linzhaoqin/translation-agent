@@ -57,9 +57,9 @@ def get_completion(
             If json_mode is False, returns the generated text as a string.
     """
 
-    # Sleep for 60 seconds before each API call
-    time.sleep(60)
-    print("Sleeping for 60 seconds before each API call")
+    # Sleep for 30 seconds before each API call
+    time.sleep(30)
+    print("Sleeping for 30 seconds before each API call")
 
     if json_mode:
         response = client.chat.completions.create(
