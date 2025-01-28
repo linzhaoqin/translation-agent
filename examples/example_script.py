@@ -14,8 +14,8 @@ if __name__ == "__main__":
     source_lang = "English"
     target_lang = "French"
     country = "France"
-    input_file = "sample-texts/en.ts"
-    output_file = "fr.ts"  # 你可以直接修改这个文件名
+    input_file = "sample-texts/sample-short1.txt"
+    output_file = "sample-short1-fr.txt"  # 你可以直接修改这个文件名
 
     # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
