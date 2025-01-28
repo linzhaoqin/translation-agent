@@ -34,7 +34,7 @@ def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
     model: str = "az-openai-gpt4o",
-    temperature: float = 0.3,
+    temperature: float = 0.5,
     json_mode: bool = False,
 ) -> Union[str, dict]:
     """
