@@ -2,9 +2,8 @@ import os
 from typing import List, Union
 import time
 
-import openai
+import anthropic
 import tiktoken
-from openai import AzureOpenAI
 from dotenv import load_dotenv
 from icecream import ic
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -12,20 +11,17 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()  # read local .env file
 
-AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
-AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
 
 # client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-client = AzureOpenAI(
-    api_key=AZURE_OPENAI_API_KEY,
-    api_version="2024-05-01-preview",
-    azure_endpoint=AZURE_OPENAI_ENDPOINT,
+client = anthropic.Anthropic(
+    api_key=ANTHROPIC_API_KEY,
 )
 
 MAX_TOKENS_PER_CHUNK = (
-    1000  # if text is more than this many tokens, we'll break it up into
+    2000  # if text is more than this many tokens, we'll break it up into
 )
 # discrete chunks to translate one chunk at a time
 
@@ -33,19 +29,19 @@ MAX_TOKENS_PER_CHUNK = (
 def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
-    model: str = "az-openai-gpt4o",
+    model: str = "claude-3-5-sonnet-20241022",
     temperature: float = 0.5,
     json_mode: bool = False,
 ) -> Union[str, dict]:
     """
-        Generate a completion using the OpenAI API.
+    Generate a completion using the Anthropic API.
 
     Args:
         prompt (str): The user's prompt or query.
         system_message (str, optional): The system message to set the context for the assistant.
             Defaults to "You are a helpful assistant.".
-        model (str, optional): The name of the OpenAI model to use for generating the completion.
-            Defaults to "gpt-4-turbo".
+        model (str, optional): The name of the Anthropic model to use for generating the completion.
+            Defaults to "claude-3-5-sonnet-20241022".
         temperature (float, optional): The sampling temperature for controlling the randomness of the generated text.
             Defaults to 0.3.
         json_mode (bool, optional): Whether to return the response in JSON format.
@@ -58,32 +54,19 @@ def get_completion(
     """
 
     # Sleep for 30 seconds before each API call
-    time.sleep(30)
-    print("Sleeping for 30 seconds before each API call")
+    # time.sleep(30)
+    # print("Sleeping for 30 seconds before each API call")
 
-    if json_mode:
-        response = client.chat.completions.create(
-            model=model,
-            temperature=temperature,
-            top_p=1,
-            response_format={"type": "json_object"},
-            messages=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": prompt},
-            ],
-        )
-        return response.choices[0].message.content
-    else:
-        response = client.chat.completions.create(
-            model=model,
-            temperature=temperature,
-            top_p=1,
-            messages=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": prompt},
-            ],
-        )
-        return response.choices[0].message.content
+    response = client.messages.create(
+        model=model,
+        max_tokens=MAX_TOKENS_PER_CHUNK,
+        temperature=temperature,
+        system=system_message,
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+    )
+    return response.content[0].text
 
 
 def one_chunk_initial_translation(
@@ -191,8 +174,15 @@ Output only the suggestions and nothing else."""
 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
-    print("\nReflection completed")
-    print(f"Generated {len(reflection.split('.'))} suggestions")
+    
+    # 新增详细建议打印
+    print("\n=== 专家修改建议 ===")
+    suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
+    for i, suggestion in enumerate(suggestions, 1):
+        print(f"{i}. {suggestion}")
+    print("="*30)
+    
+    print(f"\n生成 {len(suggestions)} 条建议")
 
     return reflection
 
@@ -398,7 +388,7 @@ def multichunk_reflect_on_translation(
 You will be provided with a source text and its translation and your goal is to improve the translation."
 
     if country != "":
-        reflection_prompt = """Your task is to carefully read a source text and part of a translation of that text from {source_lang} to {target_lang}, and then give constructive criticism and helpful suggestions for improving the translation.
+        reflection_prompt = """Your task is to carefully read a source text and part of a translation of that text from {source_lang} to {target_lang}, and then give constructive criticisms and helpful suggestions for improving the translation.
 The final style and tone of the translation should match the style of {target_lang} colloquially spoken in {country}.
 
 The source text is below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, and the part that has been translated
