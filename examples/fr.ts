@@ -66,7 +66,8 @@ export default {
         title : "Fonctionnalités supplémentaires",
         item1 : "Mises à jour régulières avec la dernière technologie IA",
         item2 : "Demandez de nouvelles fonctionnalités",
-      },useCasesTitle : "Découvrez nos différentes applications",
+      },
+      useCasesTitle : "Découvrez nos différentes applications",
       faqTitle : "Foire aux questions",
     },
     blog: {

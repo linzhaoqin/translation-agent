@@ -1,9 +1,10 @@
 import os
-from typing import List, Union
+from typing import List, Union, Any
 import time
 import re
 import ast
 from datetime import datetime
+import json
 
 import anthropic
 import tiktoken
@@ -35,70 +36,105 @@ def is_json_like_file(file_path: str) -> bool:
     return os.path.splitext(file_path)[1].lower() in json_like_extensions
 
 
-def extract_keys(obj: Any, prefix: str = '', keys: set = None) -> set:
-    """递归提取所有键值路径"""
-    if keys is None:
-        keys = set()
+def validate_json_keys(
+    source_content: str,
+    translated_content: str,
+    source_file: str
+):
+    """校验翻译后的键值完整性（宽松模式）"""
+    def extract_keys(content: str) -> set:
+        """提取TS文件中的所有键路径"""
+        key_paths = set()
+        stack = []
 
-    if isinstance(obj, dict):
-        for key, value in obj.items():
-            current_path = f"{prefix}.{key}" if prefix else key
-            keys.add(current_path)
-            extract_keys(value, current_path, keys)
-    return keys
+        # 使用正则匹配键值对
+        pattern = re.compile(
+            r'(\w+)\s*:\s*([\'\"].*?[\'\"]|{|\d+|\[)',  # 匹配 key: value 结构
+            re.DOTALL
+        )
 
+        lines = content.split('\n')
+        for line in lines:
+            # 跳过注释行
+            if line.strip().startswith('//'):
+                continue
 
-def validate_json_keys(source_content: str, translated_content: str,
-                       source_file: str, output_file: str = None) -> None:
-    """验证翻译前后的键值是否完整匹配"""
+            # 匹配键
+            match = pattern.search(line)
+            if match:
+                key = match.group(1)
+                value_indicator = match.group(2)
+
+                # 处理嵌套结构
+                if value_indicator == '{':
+                    stack.append(key)
+                elif stack:
+                    current_path = '.'.join(stack + [key])
+                    key_paths.add(current_path)
+                else:
+                    key_paths.add(key)
+
+            # 检测结构结束
+            if '}' in line and stack:
+                stack.pop()
+
+        return key_paths
+
     try:
-        # 增强的TS/JS内容清洗
-        def clean_ts_content(content):
-            return re.sub(
-                r'^export\s+default\s*|;\s*$',
-                '',
-                content,
-                flags=re.MULTILINE
-            ).strip()
+        # 提取源文件和翻译文件的键路径
+        source_keys = extract_keys(source_content)
+        translated_keys = extract_keys(translated_content)
 
-        # 使用更安全的ast.literal_eval替代eval
-        source_obj = ast.literal_eval(clean_ts_content(source_content))
-        translated_obj = ast.literal_eval(clean_ts_content(translated_content))
-
-        # 提取键值路径
-        source_keys = extract_keys(source_obj)
-        translated_keys = extract_keys(translated_obj)
-
-        # 生成差异报告
+        # 计算差异
         missing_keys = source_keys - translated_keys
         extra_keys = translated_keys - source_keys
 
-        # 构建报告内容
-        report = []
+        # 生成报告
+        report = [
+            "=== 键值校验报告 ===",
+            f"源文件: {os.path.basename(source_file)}",
+            f"检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+        ]
+
         if missing_keys:
-            report.append("\n=== 缺失的键值 ===")
-            report.extend(f"- {key}" for key in sorted(missing_keys))
+            report.append("=== 缺失的键值 ===")
+            report.extend(sorted(f"- {key}" for key in missing_keys))
 
         if extra_keys:
             report.append("\n=== 多余的键值 ===")
-            report.extend(f"- {key}" for key in sorted(extra_keys))
+            report.extend(sorted(f"- {key}" for key in extra_keys))
 
-        # 输出报告
-        if report:
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            print(f"\n=== 键值校验报告 ===\n源文件: {source_file}\n检查时间: {timestamp}")
-            print("\n".join(report))
+        if not missing_keys and not extra_keys:
+            report.append("✅ 所有键值匹配完整")
 
-            output_file = output_file or f"key_validation_{timestamp}.txt"
-            with open(output_file, 'w', encoding='utf-8') as f:
-                f.write(f"=== 键值校验报告 ===\n源文件: {
-                        source_file}\n检查时间: {timestamp}\n")
-                f.write("\n".join(report))
-        else:
-            print("\n✓ 键值校验通过：所有键值完全匹配")
+        # 输出并保存报告
+        print('\n'.join(report))
+        save_validation_report('\n'.join(report))
 
     except Exception as e:
-        print(f"\n❌ 键值校验失败: {str(e)}")
+        print(f"❌ 校验失败: {str(e)}")
+
+
+def save_validation_report(report_content: str):
+    """保存校验报告到文件"""
+    try:
+        # 创建 reports 目录
+        report_dir = "validation_reports"
+        os.makedirs(report_dir, exist_ok=True)
+
+        # 生成带时间戳的文件名
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"key_validation_{timestamp}.txt"
+        filepath = os.path.join(report_dir, filename)
+
+        # 写入文件
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(report_content)
+
+        print(f"校验报告已保存至: {filepath}")
+
+    except Exception as e:
+        print(f"保存报告失败: {str(e)}")
 
 
 def get_completion(
@@ -791,3 +827,30 @@ def translate(
             )
 
         return final_translation
+
+
+def standalone_validate(source_path: str, translated_path: str) -> None:
+    """
+    独立校验已翻译文件的键值完整性
+
+    Args:
+        source_path: 源文件路径 (如 en.ts)
+        translated_path: 翻译文件路径 (如 fr.ts)
+    """
+    try:
+        with open(source_path, 'r', encoding='utf-8') as f:
+            source_content = f.read()
+
+        with open(translated_path, 'r', encoding='utf-8') as f:
+            translated_content = f.read()
+
+        validate_json_keys(
+            source_content=source_content,
+            translated_content=translated_content,
+            source_file=source_path
+        )
+
+    except FileNotFoundError as e:
+        print(f"❌ 文件未找到: {str(e)}")
+    except Exception as e:
+        print(f"❌ 校验失败: {str(e)}")

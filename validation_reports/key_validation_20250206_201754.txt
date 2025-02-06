@@ -1,0 +1,13 @@
+=== 键值校验报告 ===
+源文件: en.ts
+检查时间: 2025-02-06 20:17:54
+
+=== 缺失的键值 ===
+- app.index.useCasesTitle
+- sampleTranslations.japanese.comparison
+- sampleTranslations.japanese.googleTranslation
+
+=== 多余的键值 ===
+- app.index.bonusFeatures.useCasesTitle
+- ocrSampleImages.chinese.backgroundInfo
+- sampleTranslations.japanese.comparaison
