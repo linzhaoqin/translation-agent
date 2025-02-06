@@ -1,6 +1,9 @@
 import os
 from typing import List, Union
 import time
+import re
+import ast
+from datetime import datetime
 
 import anthropic
 import tiktoken
@@ -31,76 +34,69 @@ def is_json_like_file(file_path: str) -> bool:
     json_like_extensions = {'.json', '.ts', '.js'}
     return os.path.splitext(file_path)[1].lower() in json_like_extensions
 
+
 def extract_keys(obj: Any, prefix: str = '', keys: set = None) -> set:
     """递归提取所有键值路径"""
     if keys is None:
         keys = set()
-    
+
     if isinstance(obj, dict):
         for key, value in obj.items():
             current_path = f"{prefix}.{key}" if prefix else key
             keys.add(current_path)
             extract_keys(value, current_path, keys)
-    elif isinstance(obj, list):
-        for i, item in enumerate(obj):
-            current_path = f"{prefix}[{i}]"
-            extract_keys(item, current_path, keys)
-    
     return keys
 
-def validate_json_keys(source_content: str, translated_content: str, 
-                      source_file: str, output_file: str = None) -> None:
+
+def validate_json_keys(source_content: str, translated_content: str,
+                       source_file: str, output_file: str = None) -> None:
     """验证翻译前后的键值是否完整匹配"""
     try:
-        # 将ts/js文件转换为可解析的JSON格式
-        if source_file.endswith(('.ts', '.js')):
-            source_content = source_content.replace('export default', '')
-            translated_content = translated_content.replace('export default', '')
-        
-        # 解析源文件和翻译文件
-        source_obj = eval(source_content)
-        translated_obj = eval(translated_content)
-        
-        # 提取所有键值路径
+        # 增强的TS/JS内容清洗
+        def clean_ts_content(content):
+            return re.sub(
+                r'^export\s+default\s*|;\s*$',
+                '',
+                content,
+                flags=re.MULTILINE
+            ).strip()
+
+        # 使用更安全的ast.literal_eval替代eval
+        source_obj = ast.literal_eval(clean_ts_content(source_content))
+        translated_obj = ast.literal_eval(clean_ts_content(translated_content))
+
+        # 提取键值路径
         source_keys = extract_keys(source_obj)
         translated_keys = extract_keys(translated_obj)
-        
-        # 找出缺失和多余的键
+
+        # 生成差异报告
         missing_keys = source_keys - translated_keys
         extra_keys = translated_keys - source_keys
-        
-        # 准备验证报告
+
+        # 构建报告内容
         report = []
         if missing_keys:
             report.append("\n=== 缺失的键值 ===")
-            for key in sorted(missing_keys):
-                report.append(f"- {key}")
-        
+            report.extend(f"- {key}" for key in sorted(missing_keys))
+
         if extra_keys:
             report.append("\n=== 多余的键值 ===")
-            for key in sorted(extra_keys):
-                report.append(f"- {key}")
-                
+            report.extend(f"- {key}" for key in sorted(extra_keys))
+
+        # 输出报告
         if report:
-            # 打印到终端
-            print("\n=== 键值校验报告 ===")
-            print(f"源文件: {source_file}")
-            print(f"检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print(f"\n=== 键值校验报告 ===\n源文件: {source_file}\n检查时间: {timestamp}")
             print("\n".join(report))
-            
-            # 保存到文件
-            if output_file is None:
-                output_file = f"key_validation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-            
+
+            output_file = output_file or f"key_validation_{timestamp}.txt"
             with open(output_file, 'w', encoding='utf-8') as f:
-                f.write("=== 键值校验报告 ===\n")
-                f.write(f"源文件: {source_file}\n")
-                f.write(f"检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"=== 键值校验报告 ===\n源文件: {
+                        source_file}\n检查时间: {timestamp}\n")
                 f.write("\n".join(report))
-                print(f"\n校验报告已保存至: {output_file}")
         else:
             print("\n✓ 键值校验通过：所有键值完全匹配")
-            
+
     except Exception as e:
         print(f"\n❌ 键值校验失败: {str(e)}")
 
@@ -253,14 +249,14 @@ Output only the suggestions and nothing else."""
 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
-    
+
     # 新增详细建议打印
     print("\n=== 专家修改建议 ===")
     suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
     for i, suggestion in enumerate(suggestions, 1):
         print(f"{i}. {suggestion}")
     print("="*30)
-    
+
     print(f"\n生成 {len(suggestions)} 条建议")
 
     return reflection
@@ -737,8 +733,9 @@ def translate(
     source_text,
     country,
     max_tokens=MAX_TOKENS_PER_CHUNK,
+    source_file_path: str = None
 ):
-    """Translate the source_text from source_lang to target_lang."""
+    """Translate the source_text from source_lang to target_lang"""
 
     num_tokens_in_text = num_tokens_in_string(source_text)
 
@@ -750,6 +747,14 @@ def translate(
         final_translation = one_chunk_translate_text(
             source_lang, target_lang, source_text, country
         )
+
+        # 新增校验逻辑
+        if source_file_path and is_json_like_file(source_file_path):
+            validate_json_keys(
+                source_content=source_text,
+                translated_content=final_translation,
+                source_file=source_file_path
+            )
 
         return final_translation
 
@@ -774,4 +779,15 @@ def translate(
             source_lang, target_lang, source_text_chunks, country
         )
 
-        return "".join(translation_2_chunks)
+        final_translation = "".join(translation_2_chunks) if isinstance(
+            translation_2_chunks, list) else translation_2_chunks
+
+        # 新增校验逻辑
+        if source_file_path and is_json_like_file(source_file_path):
+            validate_json_keys(
+                source_content=source_text,
+                translated_content=final_translation,
+                source_file=source_file_path
+            )
+
+        return final_translation
