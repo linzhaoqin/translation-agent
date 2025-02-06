@@ -66,7 +66,8 @@ export default {
         title : "Avantages supplémentaires",
         item1 : "Mises à jour continues avec les technologies d'IA les plus récentes",
         item2 : "Suggérez de nouvelles fonctionnalités",
-      },useCasesTitle : "Découvrez nos différentes applications",
+      },
+      useCasesTitle : "Découvrez nos différentes applications",
       faqTitle : "Foire aux questions",
     },
     blog: {
@@ -254,7 +255,8 @@ export default {
   sampleTranslations: {
     japanese: {
         gpt4oTranslation: "Accomplir les responsabilités de ceux qui possèdent, et se dévouer au monde avec un esprit d'amour inébranlable — voici la 'Chevalerie'.",
-        comparaison : "La traduction de GPT4o est plus claire et plus fluide, se terminant par 'c'est la Chevalerie.' La version de Google est moins claire et maladroite.",
+        googleTranslation: "Vers la 'chevalerie', qui consiste à remplir les responsabilités de ceux qui en ont les moyens et à se dévouer au monde avec un fort amour spirituel.",
+        comparison : "La traduction de GPT4o est plus claire et plus fluide, se terminant par 'c'est la Chevalerie.' La version de Google est moins claire et maladroite.",
       },
       french: {
         gpt4oTranslation : "Nouveau-né [données masquées] par accouchement naturel. L'examen néonatal est normal. La croissance staturo-pondérale est normale.",

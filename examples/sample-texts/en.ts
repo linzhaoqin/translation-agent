@@ -7,10 +7,8 @@ export default {
           "Whether it's Japanese menus, Arabic signs or Korean labels - get translations with cultural context explained. Works in 100+ languages.",
       startForFreeBtn: "Start for free",
       blogLink: "Blog",
-
       loginPromoteMsg: "10 free trials • No subscription • Pay-as-you-go",
       loggingInMsg: "Logging in...",
-
       howToUsePhotolate: "How to Use Photolate",
       howToUsePhotolateStep1: "Step 1: Choose Photo & Detect Text",
       howToUsePhotolateStep1Desc:
@@ -18,10 +16,8 @@ export default {
       howToUsePhotolateStep2: "Step 2: Translate Picture Text to Your Language",
       howToUsePhotolateStep2Desc:
         "Top-tier AI that translates text on pictures, powered by OpenAI GPT-4o for superior accuracy.",
-
       howToUsePhotolateStep3: "Step 3: Provide Context and Background",
       howToUsePhotolateStep3Desc: "In-depth insights powered by OpenAI GPT-4o",
-
       howToUsePhotolateExampleOriginalTextPart1:
         "吾各花京院典明,为吾友阿布德尔耻,为身田吾友汲鲁那雷夫之妹灵魂之安息,我要你以死偿命! ",
       howToUsePhotolateExampleOriginalTextPart2: "花京院典明",
@@ -30,7 +26,6 @@ export default {
       howToUsePhotolateExampleTranslatedTextPart2: "-Kakyoin Noriaki",
       howToUsePhotolateExampleBGInfo:
         "This quote is from the manga and anime 'JoJo's Bizarre Adventure,' specifically referencing the character Kakyoin Noriaki, who is known for his strong sense of friendship and loyalty. ",
-
       featuresTitle: "How Photolate Empowers You",
       features1: "1. Cutting-edge OCR Text Recognition",
       features1Desc:
@@ -47,7 +42,6 @@ export default {
       features4Desc:
         "Use our translator to convert Japanese, Korean, Chinese, and Arabic images into any of 100+ supported languages. Break language barriers with Photolate.",
       more100: "100+ More...",
-
       priceTitle: "Simple, Flexible Pricing for Photolate",
       priceDesc:
         "Enjoy 10 free photo translations, then simply pay-as-you-go. No subscriptions required.",
@@ -67,7 +61,6 @@ export default {
         item1: "Continuous updates with latest AI technology",
         item2: "Request new features",
       },
-
       useCasesTitle: "Explore our powerful use cases",
       faqTitle: "Frequently Asked Questions",
     },

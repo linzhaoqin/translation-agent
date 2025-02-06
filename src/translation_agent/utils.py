@@ -199,10 +199,14 @@ def one_chunk_initial_translation(
         source_lang} to {target_lang}."
 
     translation_prompt = f"""This is an {source_lang} to {target_lang} translation, please provide the {target_lang} translation for this text. \
-Do not provide any explanations or text apart from the translation.
-{source_lang}: {source_text}
+Do not provide any explanations or text apart from the translation. PRESERVE ALL KEYS BEFORE COLONS.
 
-{target_lang}:"""
+The source text delimited by XML tags <SOURCE_TEXT></SOURCE_TEXT> are as follows:
+<SOURCE_TEXT>
+{source_text}
+</SOURCE_TEXT>
+
+"""
 
     translation = get_completion(
         translation_prompt, system_message=system_message)
@@ -258,7 +262,9 @@ When writing suggestions, pay attention to whether there are ways to improve the
 
 Write a list of specific, helpful and constructive suggestions for improving the translation.
 Each suggestion should address one specific part of the translation.
-Output only the suggestions and nothing else."""
+Output only the suggestions and nothing else.
+
+When writing suggestions, ensure keys (before colon) remain unchanged. Focus on value translations:"""
 
     else:
         reflection_prompt = f"""Your task is to carefully read a source text and a translation from {source_lang} to {target_lang}, and then give constructive criticisms and helpful suggestions to improve the translation. \
@@ -281,7 +287,9 @@ When writing suggestions, pay attention to whether there are ways to improve the
 
 Write a list of specific, helpful and constructive suggestions for improving the translation.
 Each suggestion should address one specific part of the translation.
-Output only the suggestions and nothing else."""
+Output only the suggestions and nothing else.
+
+When writing suggestions, ensure keys (before colon) remain unchanged. Focus on value translations:"""
 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
