@@ -26,6 +26,85 @@ MAX_TOKENS_PER_CHUNK = (
 # discrete chunks to translate one chunk at a time
 
 
+def is_json_like_file(file_path: str) -> bool:
+    """判断是否为类JSON文件（.json, .ts, .js等）"""
+    json_like_extensions = {'.json', '.ts', '.js'}
+    return os.path.splitext(file_path)[1].lower() in json_like_extensions
+
+def extract_keys(obj: Any, prefix: str = '', keys: set = None) -> set:
+    """递归提取所有键值路径"""
+    if keys is None:
+        keys = set()
+    
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            current_path = f"{prefix}.{key}" if prefix else key
+            keys.add(current_path)
+            extract_keys(value, current_path, keys)
+    elif isinstance(obj, list):
+        for i, item in enumerate(obj):
+            current_path = f"{prefix}[{i}]"
+            extract_keys(item, current_path, keys)
+    
+    return keys
+
+def validate_json_keys(source_content: str, translated_content: str, 
+                      source_file: str, output_file: str = None) -> None:
+    """验证翻译前后的键值是否完整匹配"""
+    try:
+        # 将ts/js文件转换为可解析的JSON格式
+        if source_file.endswith(('.ts', '.js')):
+            source_content = source_content.replace('export default', '')
+            translated_content = translated_content.replace('export default', '')
+        
+        # 解析源文件和翻译文件
+        source_obj = eval(source_content)
+        translated_obj = eval(translated_content)
+        
+        # 提取所有键值路径
+        source_keys = extract_keys(source_obj)
+        translated_keys = extract_keys(translated_obj)
+        
+        # 找出缺失和多余的键
+        missing_keys = source_keys - translated_keys
+        extra_keys = translated_keys - source_keys
+        
+        # 准备验证报告
+        report = []
+        if missing_keys:
+            report.append("\n=== 缺失的键值 ===")
+            for key in sorted(missing_keys):
+                report.append(f"- {key}")
+        
+        if extra_keys:
+            report.append("\n=== 多余的键值 ===")
+            for key in sorted(extra_keys):
+                report.append(f"- {key}")
+                
+        if report:
+            # 打印到终端
+            print("\n=== 键值校验报告 ===")
+            print(f"源文件: {source_file}")
+            print(f"检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            print("\n".join(report))
+            
+            # 保存到文件
+            if output_file is None:
+                output_file = f"key_validation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            
+            with open(output_file, 'w', encoding='utf-8') as f:
+                f.write("=== 键值校验报告 ===\n")
+                f.write(f"源文件: {source_file}\n")
+                f.write(f"检查时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("\n".join(report))
+                print(f"\n校验报告已保存至: {output_file}")
+        else:
+            print("\n✓ 键值校验通过：所有键值完全匹配")
+            
+    except Exception as e:
+        print(f"\n❌ 键值校验失败: {str(e)}")
+
+
 def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
