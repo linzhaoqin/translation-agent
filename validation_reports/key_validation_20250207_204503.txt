@@ -1,0 +1,32 @@
+=== 键值校验报告 ===
+源文件: en.ts
+检查时间: 2025-02-07 20:45:03
+
+=== 缺失的键值 ===
+- jsonld.description
+- jsonld.price
+- jsonld.software.description
+- jsonld.software.features
+- jsonld.software.name
+- jsonld.software.price
+- jsonld.software.priceSpecifications
+- jsonld.software.type
+- jsonld.software.unitText
+- jsonld.type
+- jsonld.unitText
+- organization
+- useCases.socialMedia.description
+
+=== 多余的键值 ===
+- useCases.socialMedia.jsonld.description
+- useCases.socialMedia.jsonld.price
+- useCases.socialMedia.jsonld.software.description
+- useCases.socialMedia.jsonld.software.features
+- useCases.socialMedia.jsonld.software.name
+- useCases.socialMedia.jsonld.software.price
+- useCases.socialMedia.jsonld.software.priceSpecifications
+- useCases.socialMedia.jsonld.software.type
+- useCases.socialMedia.jsonld.software.unitText
+- useCases.socialMedia.jsonld.type
+- useCases.socialMedia.jsonld.unitText
+- useCases.socialMedia.organization
