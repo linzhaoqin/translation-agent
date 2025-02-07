@@ -12,10 +12,10 @@ def save_translation(translation, output_file):
 if __name__ == "__main__":
     # Configuration
     source_lang = "English"
-    target_lang = "French"
-    country = "France"
+    target_lang = "Portuguese"
+    country = "Brazil"
     input_file = "sample-texts/en.ts"
-    output_file = "fr3.ts"  # 你可以直接修改这个文件名
+    output_file = "pt-br2.ts"  # 你可以直接修改这个文件名
 
     # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -34,6 +34,7 @@ if __name__ == "__main__":
         target_lang=target_lang,
         source_text=source_text,
         country=country,
+        source_file_path=input_path
     )
 
     print(f"Translation:\n\n{translation}\n{'='*50}\n")

@@ -811,11 +811,27 @@ def translate(
 
         ic(token_size)
 
-        text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
-            model_name="gpt-4",
-            chunk_size=token_size,
-            chunk_overlap=0,
-        )
+        # 新增JSON类文件处理逻辑
+        if is_json_like_file(source_file_path):
+            # 使用JSON结构感知的分割器
+            text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+                model_name="gpt-4",
+                separators=[
+                    "\n}\n",     # 优先在对象结束时分割
+                    ",\n",       # 其次在键值对结束时分割
+                    "\n"         # 最后在换行处分割（保持顺序）
+                ],
+                chunk_size=token_size,
+                chunk_overlap=0,
+                keep_separator=True
+            )
+        else:
+            # 原有通用分割逻辑
+            text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+                model_name="gpt-4",
+                chunk_size=token_size,
+                chunk_overlap=0,
+            )
 
         source_text_chunks = text_splitter.split_text(source_text)
 
@@ -862,3 +878,54 @@ def standalone_validate(source_path: str, translated_path: str) -> None:
         print(f"❌ 文件未找到: {str(e)}")
     except Exception as e:
         print(f"❌ 校验失败: {str(e)}")
+
+def debug_chunk_split(source_file_path: str, text: str, max_tokens: int = 500):
+    """快速验证分块逻辑的调试函数"""
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    
+    token_size = calculate_chunk_size(num_tokens_in_string(text), max_tokens)
+    
+    if is_json_like_file(source_file_path):
+        splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+            model_name="gpt-4",
+            separators=[
+                "\n}\n",     # 优先在对象结束时分割
+                ",\n",       # 其次在键值对结束时分割
+                "\n"         # 最后在换行处分割（保持顺序）
+            ],
+            chunk_size=token_size,
+            chunk_overlap=0,
+            keep_separator=True
+        )
+    else:
+        splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
+            model_name="gpt-4",
+            chunk_size=token_size,
+            chunk_overlap=0,
+        )
+    
+    chunks = splitter.split_text(text)
+    
+    # 打印分块诊断信息
+    print(f"\n🔍 分块诊断（共 {len(chunks)} 个块）")
+    for i, chunk in enumerate(chunks, 1):
+        print(f"\n▋▋▋ 块 #{i} [长度: {len(chunk)} 字符] ▋▋▋")
+        print("-"*50)  # 添加分隔线
+        print(chunk)    # 直接打印完整内容
+        print("-"*50)  # 添加分隔线
+        print("─── 结构检查 ───")
+        print(f"• 括号平衡: {check_balanced_brackets(chunk)}")
+        print(f"• 包含完整键值对: {has_complete_keyvalue(chunk)}")
+        print("▋▋▋▋▋▋▋▋▋▋▋▋▋▋▋▋▋▋")
+
+def check_balanced_brackets(text: str) -> bool:
+    stack = []
+    for char in text:
+        if char == '{': stack.append('}')
+        elif char == '[': stack.append(']')
+        elif stack and char == stack[-1]: stack.pop()
+    return not stack
+
+def has_complete_keyvalue(text: str) -> bool:
+    lines = text.split('\n')
+    return all(':' in line for line in lines if line.strip() and not line.strip().endswith(('{', '}', '[', ']')))
