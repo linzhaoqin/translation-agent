@@ -24,10 +24,10 @@ client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
 )
 
-MAX_TOKENS_PER_CHUNK = (
-    2000  # if text is more than this many tokens, we'll break it up into
-)
-# discrete chunks to translate one chunk at a time
+MAX_TOKENS_PER_CHUNK = 3000  # 输入分块的最大token数
+MAX_OUTPUT_TOKENS = 8000      # API返回内容的最大token限制
+# https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
+
 
 
 def is_json_like_file(file_path: str) -> bool:
@@ -170,7 +170,7 @@ def get_completion(
 
     response = client.messages.create(
         model=model,
-        max_tokens=MAX_TOKENS_PER_CHUNK,
+        max_tokens=MAX_OUTPUT_TOKENS,  # 改为使用新的输出限制
         temperature=temperature,
         system=system_message,
         messages=[

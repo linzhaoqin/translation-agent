@@ -281,38 +281,5 @@ export default {
         title: "Social Media",
         description: "Translate memes, captions, and comments from global posts. Easily translate from a screenshot or a manga image. Connect with worldwide trends and conversations effortlessly.",
       },
-  },
-  jsonld: {
-    software: {
-      name: "Photolate",
-      description:
-        "Photolate is the only text from image translator that provides cultural context, helping you understand everything from Korean menus to Japanese street signs and Russian documents. Our AI technology, featuring advanced OCR and GPT-4o, lets you translate text from any screenshot or image file with cultural insights. Start with 10 free credits for instant, accurate translations.",
-      offerDescription:
-        "Begin with 10 free credits. Additional credits available for purchase to continue enjoying our comprehensive translation services.",
-      features: [
-        "Advanced OCR for precise recognition of handwritten and printed text",
-        "Interactive text selection for targeted translation",
-        "Support for 100+ languages",
-        "Rich cultural context and background information",
-        "Powered by advanced AI models like GPT-4o",
-        "Instant translation of text in images",
-        "User-friendly interface with flexible text selection",
-      ],
-      priceSpecifications: [
-        {
-          type: "free",
-          price: "0",
-          description: "Initial free credits for new users",
-          unitText: "10 credits",
-        },
-        {
-          type: "paid",
-          price: "1",
-          description: "Additional credits for continued use",
-          unitText: "10 credits",
-        },
-      ],
-      organization: "Photolate",
-    },
-  },
+  }
 };
