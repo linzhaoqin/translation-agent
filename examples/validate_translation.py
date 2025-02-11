@@ -5,7 +5,7 @@ import translation_agent.utils as ta_utils
 def main():
     # 配置校验文件路径
     source_file = "sample-texts/en.ts"  # 源文件路径
-    translated_file = "da.ts"           # 已翻译文件路径
+    translated_file = "cs.ts"           # 已翻译文件路径
 
     # 获取绝对路径
     script_dir = os.path.dirname(os.path.abspath(__file__))
