@@ -12,10 +12,10 @@ def save_translation(translation, output_file):
 if __name__ == "__main__":
     # Configuration
     source_lang = "English"
-    target_lang = "Hungarian"
-    country = "Hungary"
+    target_lang = "korean"
+    country = "Korea"
     input_file = "sample-texts/en.ts"
-    output_file = "hu.ts"  # 你可以直接修改这个文件名
+    output_file = "ko.ts"  # 你可以直接修改这个文件名
 
     # Get file paths
     script_dir = os.path.dirname(os.path.abspath(__file__))

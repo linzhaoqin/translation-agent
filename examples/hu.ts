@@ -183,8 +183,7 @@ export default {
         question: "Milyen gyorsak a fordítások?",
         answer: "A legtöbb fordítás másodperceken belül elkészül, a kép méretétől és a szöveg összetettségétől függően.",
       },
-  }
-},
+  },
   ocrSampleImages: {
     chinese: {
         caption: "Kínai karakteres tetoválás",
