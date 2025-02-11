@@ -24,10 +24,9 @@ client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
 )
 
-MAX_TOKENS_PER_CHUNK = 3000  # 输入分块的最大token数
+MAX_TOKENS_PER_CHUNK = 1800  # 输入分块的最大token数
 MAX_OUTPUT_TOKENS = 8000      # API返回内容的最大token限制
 # https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
-
 
 
 def is_json_like_file(file_path: str) -> bool:
@@ -164,9 +163,20 @@ def get_completion(
             If json_mode is False, returns the generated text as a string.
     """
 
-    # Sleep for 30 seconds before each API call
-    # time.sleep(30)
-    # print("Sleeping for 30 seconds before each API call")
+    # 新增请求信息打印
+    print("\n=== API REQUEST ===")
+    print(f"System Message: {system_message}")
+    print(f"\nUser Prompt ({len(prompt)} chars):\n{'-'*40}")
+    print(prompt)
+    print("-"*40)
+    print(f"Model: {model}")
+    print(f"Temperature: {temperature}")
+    print(f"Max Tokens: {MAX_OUTPUT_TOKENS}")
+    print("="*40 + "\n")
+
+    # Sleep for 10 seconds before each API call
+    time.sleep(10)
+    print("Sleeping for 10 seconds before each API call")
 
     response = client.messages.create(
         model=model,
