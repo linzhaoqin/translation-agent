@@ -24,7 +24,7 @@ client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
 )
 
-MAX_TOKENS_PER_CHUNK = 1800  # 输入分块的最大token数
+MAX_TOKENS_PER_CHUNK = 1000  # 输入分块的最大token数
 MAX_OUTPUT_TOKENS = 8000      # API返回内容的最大token限制
 # https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
 
@@ -175,8 +175,8 @@ def get_completion(
     print("="*40 + "\n")
 
     # Sleep for 10 seconds before each API call
-    time.sleep(10)
-    print("Sleeping for 10 seconds before each API call")
+    # time.sleep(10)
+    # print("Sleeping for 10 seconds before each API call")
 
     response = client.messages.create(
         model=model,
@@ -829,6 +829,7 @@ def translate(
                 separators=[
                     "\n}\n",     # 优先在对象结束时分割
                     ",\n",       # 其次在键值对结束时分割
+                    ",\n\n",     # 增加空行分割
                     "\n"         # 最后在换行处分割（保持顺序）
                 ],
                 chunk_size=token_size,
