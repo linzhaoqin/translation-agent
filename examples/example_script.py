@@ -335,5 +335,5 @@ if __name__ == "__main__":
     # 4. 从特定索引开始翻译到最后
     # translate_to_languages(start_index=20)
     
-    # 默认示例：翻译到前2种语言
-    translate_to_languages(start_index=1, end_index=3, source_locale_code="en")
+    # 默认示例：翻译一部分语言
+    translate_to_languages(start_index=3, end_index=4, source_locale_code="en")
