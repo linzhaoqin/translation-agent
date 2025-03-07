@@ -1,285 +1,183 @@
 export default {
-  app: {
-    name: "Photolate",
-    index: {
-      slogan: "The Only AI Image Translator That Explains Cultural Context",
-      description:
-          "Whether it's Japanese menus, Arabic signs or Korean labels - get translations with cultural context explained. Works in 100+ languages.",
-      startForFreeBtn: "Start for free",
-      blogLink: "Blog",
-      loginPromoteMsg: "10 free trials • No subscription • Pay-as-you-go",
-      loggingInMsg: "Logging in...",
-      howToUsePhotolate: "How to Use Photolate",
-      howToUsePhotolateStep1: "Step 1: Choose Photo & Detect Text",
-      howToUsePhotolateStep1Desc:
-        "Advanced OCR powered by Azure AI precisely extracts text from image, detecting Japanese kanji and other languages, whether printed or handwritten.",
-      howToUsePhotolateStep2: "Step 2: Translate Picture Text to Your Language",
-      howToUsePhotolateStep2Desc:
-        "Top-tier AI that translates text on pictures, powered by OpenAI GPT-4o for superior accuracy.",
-      howToUsePhotolateStep3: "Step 3: Provide Context and Background",
-      howToUsePhotolateStep3Desc: "In-depth insights powered by OpenAI GPT-4o",
-      howToUsePhotolateExampleOriginalTextPart1:
-        "吾各花京院典明,为吾友阿布德尔耻,为身田吾友汲鲁那雷夫之妹灵魂之安息,我要你以死偿命! ",
-      howToUsePhotolateExampleOriginalTextPart2: "花京院典明",
-      howToUsePhotolateExampleTranslatedTextPart1:
-        "I, Kakyoin Noriaki, will avenge my friend Abdoel, and for the peace of my friend Jotaro's sister, I want you to pay with your life!",
-      howToUsePhotolateExampleTranslatedTextPart2: "-Kakyoin Noriaki",
-      howToUsePhotolateExampleBGInfo:
-        "This quote is from the manga and anime 'JoJo's Bizarre Adventure,' specifically referencing the character Kakyoin Noriaki, who is known for his strong sense of friendship and loyalty. ",
-      featuresTitle: "How Photolate Empowers You",
-      features1: "1. Cutting-edge OCR Text Recognition",
-      features1Desc:
-        "Advanced OCR powered by Azure AI. Recognizes text from images, both printed and handwritten, in multiple languages with exceptional accuracy.",
-      features2: "2. Superior Translations with OpenAI GPT-4o",
-      features2Desc:
-        "Our cutting-edge AI model delivers more accurate translations than Google Translate, supporting over 100 languages.",
-      translationsComparison: "GPT-4o vs Google Translate",
-      comparison: "Comparison",
-      features3: "3. Understand Context, Not Just Words",
-      features3Desc:
-        "Our AI-powered image translator reveals cultural insights and hidden meanings beyond simple translation.",
-      features4: "4. Translate 100+ Languages Instantly",
-      features4Desc:
-        "Use our translator to convert Japanese, Korean, Chinese, and Arabic images into any of 100+ supported languages. Break language barriers with Photolate.",
-      more100: "100+ More...",
-      priceTitle: "Simple, Flexible Pricing for Photolate",
-      priceDesc:
-        "Enjoy 10 free photo translations, then simply pay-as-you-go. No subscriptions required.",
-      freeTitle: "Free",
-      freeSubtitle: "to start",
-      noSubscriptionMsg: "No subscription • Pay-as-you-go",
-      bonusFeaturesTitle: "Bonus Features",
-      features: {
-        item1: "10 free photo translations",
-        item2: "No subscriptions or commitments",
-        item3: "Pay only for what you use",
-        item4: "Use it when you need it, pause anytime",
-        item5: "Secure payments via Stripe",
-      },
-      bonusFeatures: {
-        title: "Bonus Features",
-        item1: "Continuous updates with latest AI technology",
-        item2: "Request new features",
-      },
-      useCasesTitle: "Explore our powerful use cases",
-      faqTitle: "Frequently Asked Questions",
-    },
-    blog: {
-      title: "Blog Posts",
-      toc: "Table of Contents",
-      description:
-        "Explore articles about AI-powered image translation, OCR technology, and language processing.",
-    },
-    home: {
-      greeting: "Hi",
-      welcomeText: "Nice to meet you",
-      creditsNum: "Credits",
-      choosePhotoBtn: "Choose Photo",
-      rechargeCreditsBtn: "Recharge Credits",
-      creditsRunOutMsg: "Your credits have run out. Click to recharge.",
-      processingImageMsg: "Processing image",
-      pleaseWaitMsg: "Please wait",
-      recents: "Recents",
-      myCredits: "My Credits",
-      creditsModalTitle: "Recharge Credits",
-      loadingPriceMsg: "Loading price information...",
-      priceErrorMsg: "Please wait a while and try again.",
-      bestDeal: "Best Deal. Save 10%",
-      justAMomentMsg: "Just a moment...",
-    },
-    translateResult: {
-      clickToSelect: "Click to Select",
-      autoDetect: "Auto Detect",
-      translateBtn: "Translate",
-      translateBtnLoadingState: "translating",
-      analyzingImageMsg: "Analyzing image",
-      justAMomentMsg: "Just a moment",
-      noTextDetectedMsg:
-        "No text detected in the image. Please try another photo.",
-      errorMsg:
-        "An error occurred while analyzing the photo. Please try another photo.",
-      recentLanguages: "Recents",
-      targetLanguage: "Target Language",
-      backgroundInfo: "Background Info",
-      copied: "Copied!",
-      copiedFailed: "Failed to copy text",
-      feedbackForGood: "Glad we could help you!",
-      feedbackForBad: "Thank you for your feedback. We'll work on improving!",
-    },
-    paymentResult: {
-      paymentComplete: "Payment Complete",
-      paymentCancelled: "Payment Cancelled",
-      paymentSuccessMsg: "Thank you! Your payment was successful.",
-      paymentCancelledMsg:
-        "Your payment was cancelled.Back to Home to try again.",
-      orderId: "Order ID",
-      backToHome: "Back to Home",
-    },
+  howToTranslateScene: {
+    step1Title: "Step 1: Upload Image and extract text",
+    step1Desc: "You could review the ocr text right below, and you will find it support printed and handwritten text, much better than Google Translate",
+    step2Title: "Step 2: Translate text to your language",
+    step2Desc: "Support for over 100 languages, from common ones like Spanish and French to less widely translated languages like Swahili and Thai",
+    step3Title: "Step 3: Understand Cultural Context and Meaning",
+    step3Desc: "In-depth insights and line-by-line breakdown powered by OpenAI GPT-4o, revealing cultural context and nuances",
+    exploreMoreSceneTitle: "Explore more scene about translating photos using Photolate",
+    exploreMoreSceneDesc: "Photolate support more scene, you could try it in your daily life. Every time Google Translate can't help, give Photolate a try!",
+    comparisonArticles: "Photolate is the only one translator that could provide cultural context",
+    comparisonArticlesDesc: "Here are some articles about the comparison with other translators, you could count on Photolate when Google Translate can't help",
+    more100LanguagesTitle: "Photolate Support 100+ Languages, break language barriers wherever you are",
+    more100LanguagesDesc: "Use Photolate to convert Japanese, Korean, Chinese, and Arabic images into any of 100+ supported languages. Break language barriers with Photolate.",
   },
-  meta: {
-    title: "Photolate: The Only AI Photo Translator with Context",
-    description:
-      "Translate images accurately with cultural context - better than Google Translate. From Japanese menus to Arabic signs and Korean labels, in 100+ languages.",
-    og: {
-      title: "Photolate: The Only AI Photo Translator with Context",
-      description:
-        "Translate images accurately with cultural context - better than Google Translate. From Japanese menus to Arabic signs and Korean labels, in 100+ languages.",
-    }
+  supportedScenes: {
+    chineseTattoo: {
+        shortTitle: 'Chinese Tattoo',
+        sourceImageAlt: 'Red Chinese tattoo showing four characters 花样年华 on wrist meaning In the Mood for Love, elegant minimalist design',
+        photolateResultImageAlt: 'Photolate translation of Chinese tattoo 花样年华 showing meaning "In the Mood for Love" with cultural context about Wong Kar-wai film and character breakdown',
+        translatedText: 'In the Mood for Love',
+        backgroundInfo: "The phrase '花样年华' (Huāyàng niánhuá) is the Chinese title of the famous Hong Kong film 'In the Mood for Love' directed by Wong Kar-wai. The title can be translated to 'The Age of Blossoms' or 'The Time of Youth' and refers to the beautiful, fleeting moments of youth and love.",
+        linesBreakdown: "The phrase '花样年华' translates directly to 'In the Mood for Love'. '花样' means 'patterns' or 'varieties', often implying something beautiful or intricate, while '年华' refers to 'years' or 'time', especially in the context of youth.",
+        pageTitle: "Translate Chinese Tattoos from Photos with Photolate's Cultural Contexts",
+        sceneStory: "Ever seen a Chinese tattoo and wondered about its meaning? Whether it's on someone's arm, wrist, or shoulder, Photolate helps you understand Chinese tattoo translations instantly - more accurate than Google Translate, with cultural meaning explained.",
+        howToUseTitle: "How to translate Chinese tattoos with Photolate",
+        howToUseDesc: "Photolate help you understand the meaning of Chinese tattoos from photos, with cultural insights explained.",
+      },
+      japaneseMenu: {
+        shortTitle: 'Japanese Menu',
+        sourceImageAlt: 'Japanese yakitori menu with handwritten items and prices. Shows various grilled skewer options ranging from 160-380 yen, with some items highlighted in red. The menu is in a plastic sleeve being held open.',
+        photolateResultImageAlt: 'Screenshot of a translation app showing a Japanese yakitori menu with detected text on the left and English translations on the right. The app has translated menu items like "Tsukune with Egg Yolk 280" and "Rare Liver Skewer 280" from the original Japanese text. The interface shows language selection options and a translate button.',
+        translatedText: `Skewers
+Tsukune with Egg Yolk 280
+Rare Liver Skewer 280
+Grilled Chicken Breast
+Chicken Thigh with Tartar Sauce 280
+Grilled Chicken Tender 380
+Delicious Miso Wasabi
+* All prices are listed excluding tax.`,
+        backgroundInfo: "This text appears to be part of a Japanese menu, specifically listing various types of grilled skewers (yakitori). Tsukune is a type of chicken meatball often served with a raw egg yolk. '肝レア焼' refers to liver that is grilled rare, which is a delicacy in Japan. The prices are listed in yen and the note at the end indicates that the prices are before tax.",
+        linesBreakdown: `串焼き: Skewers
+つくね月見280: Tsukune with Egg Yolk 280
+肝レア焼280: Rare Liver Skewer 280
+むねい焼ょ: Grilled Chicken Breast
+もも肉タルタルチ280: Chicken Thigh with Tartar Sauce 280
+ささみしぎ焼380: Grilled Chicken Tender 380
+旨みそわさび ··: Delicious Miso Wasabi
+※全て体本価格の表記となっております。: * All prices are listed excluding tax.`,
+        pageTitle: "How to Translate Japanese Menu from Photos",
+        sceneStory: "Stuck at a Japanese restaurant with a menu you can't read? The staff doesn't speak your language and your phone's translator is useless. Try Photolate for quick Japanese menu translation!",
+        howToUseTitle: "How to translate Japanese menu with Photolate",
+        howToUseDesc: "Decode handwritten Japanese menus instantly and get helpful cultural context about traditional dishes and ingredients.",
+      },
+      japaneseManga: {
+        shortTitle: 'Japanese Manga',
+        sourceImageAlt: 'Dramatic One Piece manga panel showing four characters with intense expressions - villains with menacing grins at top and shocked reactions below. Black and white illustration with Japanese text and "ONE PIECE" title visible at bottom.',
+        photolateResultImageAlt: 'Photolate translation interface showing One Piece manga panel with Japanese text detected and translated to English. The translation reads "The great treasure of the One Piece will be obtained by the one who finds it!!" with cultural background information explaining the manga series context.',
+        translatedText: `"The great treasure
+of the One Piece"
+will be obtained
+by the one who
+finds it!!
+ONE PIECE`,
+        backgroundInfo: `This text is from the popular Japanese manga and anime series 'One Piece' created by Eiichiro Oda. The 'One Piece' refers to the legendary treasure said to be of unimaginable value, sought after by pirates in the series.`,
+        linesBreakdown: `ひとつなぎの大秘宝: 'The great treasure of the One Piece'
+を !!: 'will be'
+手に入れた者に !!: 'obtained by the one who finds it!!'
+ONE PIECE: 'ONE PIECE'`,
+        pageTitle: "How to Translate Japanese Manga with Photolate",
+        sceneStory: "You love Japanese manga, but sometimes the latest chapters are only in Japanese, or the series you enjoy isn't translated at all. Photolate helps you understand these untranslated manga immediately.",
+        howToUseTitle: "How to translate Japanese manga with Photolate",
+        howToUseDesc: "Instantly enjoy untranslated Japanese manga and understand the cultural context of your favorite series.",
+      },
+      koreanManhwa: {
+        shortTitle: 'Korean Manhwa',
+        sourceImageAlt: 'Korean manhwa panel with a dramatic scene of a character in a dark alleyway',
+        photolateResultImageAlt: 'Photolate translation interface showing Korean manhwa panel with Korean text detected and translated to English. The translation reads "If you have time, come to the Millennium Hall in the basement to watch the play." with cultural background information explaining the manhwa series context.',
+        translatedText: `If you have time,
+we're performing a play
+at the Millennium Hall
+underground auditorium at 3 PM.
+Would you like to come watch?`,
+        backgroundInfo: `The text is an invitation to watch a play at a specific venue and time. The Millennium Hall is likely a notable location, possibly within a university or cultural center.`,
+        linesBreakdown: `시간 되시면 -> If you have time,
+오후 3시에 밀레니엄관 -> at 3 PM at the Millennium Hall
+지하 강당에서 연극하는데 -> we're performing a play at the underground auditorium
+보러 오실래요? -> Would you like to come watch?`,
+        pageTitle: "How to Translate Korean Manhwa from Photos",
+        sceneStory: "You love Korean manhwa, but often wait for translations of new chapters, especially fast-releasing webtoons. Or, you explore niche series without scanlations. You also want to grasp Korean slang and cultural references often lost in translation. Photolate provides instant access to untranslated manhwa with full cultural context.",
+        howToUseTitle: "Steps to translate Korean manhwa with Photolate",
+        howToUseDesc: "Keep up with your favorite Korean manhwa, even without official translations, and dive deeper into the story with added cultural insights.",
+      },
+      chineseHandwrittenDiary: {
+        shortTitle: 'Chinese Handwritten Diary',
+        sourceImageAlt: 'Chinese handwritten diary page on lined paper with blue ink, showing spiritual reflections and personal prayers dated July 30, 2020',
+        photolateResultImageAlt: 'Photolate translation interface showing Chinese handwritten diary with detected text on left and English translation on right, displaying spiritual reflections with highlighted text regions and translation tools',
+        translatedText: `There is nothing you can control, everything is in God's hands
+So there is no need to worry, because it is said not to worry about tomorrow
+Tomorrow will have its own arrangements, as long as you rely on God in everything and follow God's will.
+I feel that my faith in God
+is very small, every day I carry a heavy shell, using my not-so-smart mind to think about personal, family, and worldly matters,
+The more I think, the heavier the shell becomes, until I can hardly breathe. God, I ask you
+to help me, to look up to you in everything. I feel like
+my shell is
+tearing bit by bit, peeling off bit by bit,
+(but it is very painful, very painful, heart-wrenching pain
+This feeling is like a cicada shedding its shell, experiencing
+the pain of being squeezed, almost suffocating, I know this
+process is not accomplished overnight, I ask God to help me,
+support me in this painful transformation process,
+because I know, relying on myself alone, I can never complete it.
+I ask God to let me rely on you completely as soon as possible
+and no longer rely on myself.
+To become a person who no longer worries, filled
+with joy, filled with heavenly peace!
+I pray in the name of the Lord Jesus! Amen!`,
+        backgroundInfo: `This text appears to be a personal prayer or reflection, expressing a deep sense of reliance on God and the struggle of personal transformation. The imagery of a cicada shedding its shell is a metaphor for the painful process of personal growth and spiritual renewal.`,
+        linesBreakdown: `There is nothing you can control, everything is in God's hands
+So there is no need to worry, because it is said not to worry about tomorrow
+Tomorrow will have its own arrangements, as long as you rely on God in everything and follow God's will.
+I feel that my faith in God
+is very small, every day I carry a heavy shell, using my not-so-smart mind to think about personal, family, and worldly matters,
+The more I think, the heavier the shell becomes, until I can hardly breathe. God, I ask you
+to help me, to look up to you in everything. I feel like
+my shell is
+tearing bit by bit, peeling off bit by bit,
+(but it is very painful, very painful, heart-wrenching pain
+This feeling is like a cicada shedding its shell, experiencing
+the pain of being squeezed, almost suffocating, I know this
+process is not accomplished overnight, I ask God to help me,
+support me in this painful transformation process,
+because I know, relying on myself alone, I can never complete it.
+I ask God to let me rely on you completely as soon as possible
+and no longer rely on myself.
+To become a person who no longer worries, filled
+with joy, filled with heavenly peace!
+I pray in the name of the Lord Jesus! Amen!`,
+        pageTitle: "How to translate Chinese handwritten diary from images",
+        sceneStory: "You discovered your late mother's diary written in Chinese. When you tried Google Translate, it struggled with her handwriting, giving inaccurate results. This is where Photolate comes to the rescue with its superior OCR technology, accurately capturing handwritten Chinese characters for a more meaningful translation.",
+        howToUseTitle: "Converting Handwritten Chinese diary to Your Language",
+        howToUseDesc: "Accurately capture and translate personal Chinese handwritten journals with Photolate, revealing family memories and emotional nuances that other translators miss.",
+      },
+      spanishNote: {
+        shortTitle: 'Spanish Note',
+        sourceImageAlt: `Spanish handwritten note on white paper held by a person, containing poetic text about flying and angels, with cursive writing in black ink`,
+        photolateResultImageAlt: `Photolate translation interface showing Spanish handwritten note with detected text highlighted in blue boxes on left side and English translation on right side reading I couldn't help but notice how beautiful it is to fly and now I can have an angel next to me, while watching the clouds pass by the airplane window, yes, it was you, I hope not to offend you and that we can get in touch`,
+        translatedText: `I couldn't help but notice how beautiful
+it is to fly and now I can have an
+angel next to me, while watching
+the clouds pass by the airplane window,
+yes, it was you, I hope not
+to offend you and that we can get in touch`,
+        backgroundInfo: `The text appears to be a poetic or heartfelt message, possibly written during or after a flight, expressing admiration and a desire to connect with someone perceived as angelic.`,
+        linesBreakdown: `line_1: No pude cuitar notar que hermoso -> I couldn't help but notice how beautiful
+line_2: es volar y ahora pute tener a un -> it is to fly and now I can have an
+line_3: angel junto a mi, mientras vela -> angel next to me, while watching
+line_4: las nubes pasar por la ventana del -> the clouds pass by the airplane window,
+line_5: avión, si, erastu, espero no -> yes, it was you, I hope not
+line_6: ofenderte y que podamos contactarnos -> to offend you and that we can get in touch`,
+        pageTitle: "How to translate Spanish handwritten note from images",
+        sceneStory: "A man sitting next to me on a 3-hour flight handed me this Spanish note as we were disembarking. He didn't say a word the entire flight! Now I'm waiting at baggage claim, confused and curious about what it says.",
+        howToUseTitle: "Instantly Decode Mysterious Spanish Notes with Photolate",
+        howToUseDesc: "Uncover the meaning behind handwritten Spanish messages with perfect accuracy, complete with cultural nuances and emotional context.",
+      },
+      hebrewTattoo: {
+        shortTitle: 'Hebrew Tattoo',
+        sourceImageAlt: "Hebrew tattoo on skin showing the Shema prayer in black ink. The text reads 'Shema Yisrael Adonai Eloheinu Adonai Echad' which translates to 'Hear O Israel, the Lord is our God, the Lord is One' - a fundamental declaration of Jewish faith.",
+        photolateResultImageAlt: "Photolate app translating Hebrew tattoo of Shema Yisrael prayer, showing detected text regions and English translation with cultural context about this fundamental Jewish declaration of faith.",
+        translatedText: "Hear, O Israel, the Lord is our God, the Lord is One",
+        backgroundInfo: `This is a translation of the Shema Yisrael, a central declaration of faith in Judaism. It is a traditional Jewish prayer that is recited daily during morning and evening services and is considered one of the most important prayers in the Jewish faith.`,
+        linesBreakdown: `line_1: "שמע - Hear",
+line_2: "ישראל - O Israel",
+line_3: "יהו - (part of the Tetragrammaton, representing the name of God)",
+line_4: "אלוהינו - our God",
+line_5: "יהוה אחד - the Lord is One"`,
+        pageTitle: "How to translate Hebrew tattoo from images",
+        sceneStory: "You found a Reddit post with a Hebrew tattoo needing translation. Comments mentioned it was religious, but lacked details. You're curious about both the literal meaning and its significance in Judaism - something Google Translate couldn't provide.",
+        howToUseTitle: "Translate Hebrew Tattoos with Cultural Insight",
+        howToUseDesc: "Discover what those Hebrew characters truly mean, complete with their religious significance and cultural background.",
+      }     
   },
-  pages: {  
-    title: {  // SEO相关页面级标题
-      top: "Photolate: The Only AI Photo Translator with Context", // 首页SEO特定标题
-      blog: "Blog Posts | Photolate", // 博客列表页SEO特定标题
-    },
-  },
-  sampleLanguages: {
-    ar: { name: "Arabic" },
-    bn: { name: "Bengali" },
-    zh: { name: "Chinese" },
-    cs: { name: "Czech" },
-    nl: { name: "Dutch" },
-    en: { name: "English" },
-    fil: { name: "Filipino" },
-    fi: { name: "Finnish" },
-    fr: { name: "French" },
-    de: { name: "German" },
-    el: { name: "Greek" },
-    he: { name: "Hebrew" },
-    hi: { name: "Hindi" },
-    id: { name: "Indonesian" },
-    it: { name: "Italian" },
-    ja: { name: "Japanese" },
-    ko: { name: "Korean" },
-    ms: { name: "Malay" },
-    pl: { name: "Polish" },
-    pt: { name: "Portuguese" },
-    ro: { name: "Romanian" },
-    ru: { name: "Russian" },
-    es: { name: "Spanish" },
-    sw: { name: "Swahili" },
-    th: { name: "Thai" },
-    tr: { name: "Turkish" },
-    uk: { name: "Ukrainian" },
-    vi: { name: "Vietnamese" },
-  },
-  faq: {
-    accuracy: {
-        question: "How accurate are the translations?",
-        answer: "Our AI-powered system provides highly accurate translations for most languages, with continuous improvements to enhance quality.",
-      },
-      formats: {
-        question: "What image formats are supported?",
-        answer: "Translate JPG, PNG, WEBP, HEIC, and GIF images with ease. For best results, use clear pictures with easily readable text.",
-      },
-      pricing: {
-        question: "How does pricing work after the free trial?",
-        answer: "After 10 free photos, you can purchase additional translations at $0.10 per image, with no subscriptions required.",
-      },
-      handwriting: {
-        question: "Can I translate handwritten text?",
-        answer: "Yes, our OCR technology can recognize and translate both printed and handwritten text in most languages.",
-      },
-      speed: {
-        question: "How fast are the translations?",
-        answer: "Most translations are completed within seconds, depending on the image size and text complexity.",
-      },
-  },
-  ocrSampleImages: {
-    chinese: {
-        caption: "Chinese Character Tattoo",
-        translation: "Beauty Intelligence",
-        backgroundInfo:
-          "The term '美力智' can refer to the concept of beauty combined with intelligence, often used in branding or discussions around personal development and aesthetics.",
-        alt: "Photolate demo - Chinese text recognition showing '美力智' tattoo on neck, demonstrating accurate detection and translation of Chinese characters in tattoo art",
-      },
-      japanese: {
-        caption: "Japanese Ramen Shop Menu",
-        translation:
-          "Kinmedai mixed noodles ▶ Large serving 1180 yen ▶ Extra large serving 1380 yen / Both the ingredients and the extra thick noodles are generously increased / Regular size 590 yen. Aisui-do uses such 'extra thick noodles' for their mixed noodles!!",
-        backgroundInfo:
-          "Kinmedai (golden eye snapper) is a popular fish in Japanese cuisine, and 'mixed noodles' (mazesoba) is a dish that typically features a variety of toppings and sauces combined with noodles. The mention of 'extra thick noodles' suggests a focus on texture and heartiness, common in many Japanese noodle dishes.",
-        alt: "Photolate demo - Japanese menu translation showing ramen prices and descriptions, accurately recognizing both kanji and hiragana characters",
-      },
-      french: {
-        caption: "Teacher's Heartfelt Letter in French",
-        translation:
-          "The Little Prince May 29, 2015 My dear Veronica Thank you for studying French with me. You are kind and intelligent. Congratulations on starting at Lac-Ouest High School and on life. I love you. Sincerely, Mrs. Maglety P.S. I still have the 2 hearts you gave me on Valentine's Day; thank you for your friendship.",
-        backgroundInfo:
-          "This text appears to be a heartfelt letter from a teacher to a student, expressing appreciation and well-wishes for the student's start at Lac-Ouest High School and for life. The use of 'My dear Veronica' and 'Sincèrement' indicates a formal and sincere tone, typical in formal letters or notes.",
-        alt: "Photolate demo - French letter translation showing personal correspondence with cultural context about teacher-student relationships in French education",
-      },
-      spanish: {
-        caption: "Spanish Handwritten Note",
-        translation:
-          "Sometimes I try to be more laid-back but I'm not very funny × 50%. I'm very jokey but that's it. And the song I like is 'Super Peder' by Miguel Ángel and his group, and a kiss to the wind.",
-        backgroundInfo:
-          "The phrase 'Super Peder' seems to refer to a song, possibly a misinterpretation of a title or artist name. The mention of being jokey suggests a light-hearted tone, and the kiss to the wind is a poetic expression often used in songs or romantic contexts.",
-        alt: "Photolate demo - Spanish text recognition showing handwritten notes on lined paper, demonstrating accurate detection of casual handwriting with multiple text regions highlighted",
-      },
-      german: {
-        caption: "Poetic German Weight Metaphor",
-        translation: "A storm is raging on my scale. An increase",
-        backgroundInfo:
-          "The text metaphorically uses a storm to describe turmoil or chaos, possibly relating to weight or measurement, which may reflect personal struggles with body image or health.",
-        alt: "Photolate demo - German poetic text translation showing metaphorical expression with cultural context about German literary style",
-      },
-      arabic: {
-        caption: "Arabic Character Tattoo of Love",
-        translation: "I love you",
-        backgroundInfo:
-          "The phrase 'أنا احبك' is a common expression of affection in Arabic, widely used across various cultures and contexts.",
-        alt: "Photolate demo - Arabic text recognition showing common phrase 'I love you' with cultural context about expressions of affection in Arabic",
-      },
-      finnish: {
-        caption: "Finnish Handwritten Letter",
-        translation:
-          "Tarbox Hi! Thanks for introducing me to one of the world's most positive things. It’s so important to me! And your bank's least favorite will come to my favorite. It’s good and it’s wonderful that they give me that! Love you! Xoxo - Alina",
-        backgroundInfo:
-          "The text appears to be a casual message, likely from a friend named Alina, expressing gratitude and affection. The informal tone and use of 'Xoxo' suggest a close relationship, typical in friendly or affectionate correspondence.",
-        alt: "Photolate demo - Finnish casual message translation showing informal writing with cultural context about Finnish communication style",
-      },
-      russian: {
-        caption: "Russian Printed Instructions",
-        translation:
-          "The contour for decorative and applied creativity based on water-based acrylic dispersion is intended for creating three-dimensional designs and preventing the mixing of paints when painting on cotton and silk fabrics. Apply the contour to washed and ironed fabric, and let it dry for 3 hours. Apply the fabric paint. The contour can also be used to embellish finished paintings. Allow the painting to dry for 24 hours. Iron without steam for 5 minutes through cotton fabric at a temperature suitable for cotton fabric. After 48 hours of ironing, washing the item with mild detergents at a temperature of 30 °C to 40 °C is permissible without strong mechanical action. Rinse the nozzle with water. Store.",
-        backgroundInfo:
-          "This text appears to be instructions for using a specific type of fabric paint or contour, commonly used in crafting and textile arts. It reflects practices typical in DIY and artistic textile decoration.",
-        alt: "Photolate demo - Russian technical instructions translation showing detailed fabric painting guidelines with precise recognition of Cyrillic characters",
-      },
-  },
-  sampleTranslations: {
-    japanese: {
-        gpt4oTranslation: "Fulfill the responsibilities of those who possess, and dedicate oneself to the world with a steadfast spirit of love — this is 'Chivalry.'",
-        googleTranslation: "Towards 'chivalry,' which is to fulfill the responsibilities of those with means and to devote oneself to the world with a strong spiritual love.",
-        comparison: "GPT4o's translation is clearer and flows better, ending with 'this is Chivalry.' Google's version is less clear and awkward.",
-      },
-      french: {
-        gpt4oTranslation: "Baby [expurgated] via natural birth. The neonatal examination is normal. Growth in height and weight is correct.",
-        googleTranslation: "Baby [redacted] delivered vaginally. Neonatal exam is normal. Weight and height evolution is correct.",
-        comparison: "GPT4o's translation is clear and easy to understand. Google's version uses more technical terms that might be less accessible.",
-      },
-      chinese: {
-        gpt4oTranslation: "Charge!",
-        googleTranslation: "Go Duck",
-        comparison: "GPT4o accurately captures the meaning as 'Charge!' Google's literal 'Go Duck' misses the point.",
-      }
-  },
-  useCases: {
-    travel: {
-        title: "Travel",
-        description: "Snap and translate foreign menus, street signs, and tourist info instantly. Never get lost in translation again!",
-      },
-      business: {
-        title: "Business",
-        description: "Capture and translate business cards, contracts, and product labels on the go. Break language barriers in global trade.",
-      },
-      education: {
-        title: "Education",
-        description: "Translate textbook pages, lecture slides, and research papers with a quick photo. Learn without language limits.",
-      },
-      socialMedia: {
-        title: "Social Media",
-        description: "Translate memes, captions, and comments from global posts. Easily translate from a screenshot or a manga image. Connect with worldwide trends and conversations effortlessly.",
-      },
-  }
 };
