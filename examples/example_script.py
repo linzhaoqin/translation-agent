@@ -336,4 +336,5 @@ if __name__ == "__main__":
     # translate_to_languages(start_index=20)
     
     # 默认示例：翻译一部分语言
-    translate_to_languages(start_index=3, end_index=4, source_locale_code="en")
+    # 失败的序号： 3 
+    translate_to_languages(start_index=1, end_index=3, source_locale_code="en")
