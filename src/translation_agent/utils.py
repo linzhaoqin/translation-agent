@@ -831,14 +831,17 @@ def translate(
 
         # 新增JSON类文件处理逻辑
         if is_json_like_file(source_file_path):
-            # 使用JSON结构感知的分割器
+            # 改进后的结构感知分割器
             text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
                 model_name="gpt-4",
                 separators=[
-                    "\n}\n",     # 优先在对象结束时分割
-                    ",\n",       # 其次在键值对结束时分割
-                    ",\n\n",     # 增加空行分割
-                    "\n"         # 最后在换行处分割（保持顺序）
+                    "\n},\n",    # 对象结束并有下一个元素
+                    "\n}\n",     # 对象结束
+                    "},\n",      # 行内对象结束
+                    ",\n    ",   # 同级别键值分隔（缩进4个空格）
+                    ",\n  ",     # 同级别键值分隔（缩进2个空格）
+                    ",\n",       # 键值对结束时分割
+                    "\n"         # 最后在换行处分割
                 ],
                 chunk_size=token_size,
                 chunk_overlap=0,
@@ -853,6 +856,9 @@ def translate(
             )
 
         source_text_chunks = text_splitter.split_text(source_text)
+
+        # 简单打印分块信息以便调试
+        print(f"文本被分成了{len(source_text_chunks)}个块")
 
         translation_2_chunks = multichunk_translation(
             source_lang, target_lang, source_text_chunks, country
