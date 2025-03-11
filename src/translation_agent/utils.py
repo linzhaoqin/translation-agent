@@ -24,7 +24,7 @@ client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
 )
 
-MAX_TOKENS_PER_CHUNK = 2000  # 输入分块的最大token数
+MAX_TOKENS_PER_CHUNK = 1000  # 输入分块的最大token数
 MAX_OUTPUT_TOKENS = 8192      # API返回内容的最大token限制
 # https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
 
@@ -165,9 +165,9 @@ def get_completion(
 
     # 新增请求信息打印
     print("\n=== API REQUEST ===")
-    print(f"System Message: {system_message}")
+    print(f"System Message: {system_message[:50]}{'...' if len(system_message) > 50 else ''}")
     print(f"\nUser Prompt ({len(prompt)} chars):\n{'-'*40}")
-    print(prompt)
+    print(f"{prompt[:50]}{'...' if len(prompt) > 50 else ''}")  # 只展示前50个字符
     print("-"*40)
     print(f"Model: {model}")
     print(f"Temperature: {temperature}")
@@ -304,8 +304,13 @@ When writing suggestions, ensure keys (before colon) remain unchanged. Focus on 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
 
-    # 新增详细建议打印
-    print("\n=== 专家修改建议 ===")
+    # 新增完整反思结果打印
+    print("\n=== 专家修改建议（完整） ===")
+    print(reflection)  # 打印完整的反思结果
+    print("="*50)
+
+    # 保留现有的单条建议打印
+    print("\n=== 专家修改建议（分条） ===")
     suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
     for i, suggestion in enumerate(suggestions, 1):
         print(f"{i}. {suggestion}")
@@ -613,6 +618,21 @@ Output only the suggestions and nothing else."""
             )
 
         reflection = get_completion(prompt, system_message=system_message)
+        
+        # 新增每个块的完整反思结果打印
+        print(f"\n=== 块 #{i+1} 专家修改建议（完整） ===")
+        print(reflection)  # 打印完整的反思结果
+        print("="*50)
+        
+        # 也打印分条的建议便于查看
+        print(f"\n=== 块 #{i+1} 专家修改建议（分条） ===")
+        suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
+        for j, suggestion in enumerate(suggestions, 1):
+            print(f"{j}. {suggestion}")
+        print("="*30)
+        
+        print(f"\n块 #{i+1} 生成 {len(suggestions)} 条建议")
+        
         reflection_chunks.append(reflection)
 
     return reflection_chunks

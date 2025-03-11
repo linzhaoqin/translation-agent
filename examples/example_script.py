@@ -365,4 +365,4 @@ if __name__ == "__main__":
     # translate_to_languages(start_index=20)
 
     # 默认示例：翻译一部分语言
-    translate_to_languages(start_index=5, end_index=7, source_locale_code="en")
+    translate_to_languages(start_index=10, end_index=15, source_locale_code="en")
