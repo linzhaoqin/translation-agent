@@ -60,7 +60,7 @@ export default {
             backgroundInfo: `Questo è un menu di un ristorante giapponese specializzato in yakitori, spiedini di pollo grigliati. Il menu include varie parti di pollo e altri ingredienti infilzati e grigliati. Tsukune indica le polpette di pollo, mentre 'Negima' è un tipo tradizionale di yakitori che combina pezzi di pollo e cipollotto. I prezzi sono indicati in yen, e la nota in fondo indica che i prezzi non includono le tasse.`,
             linesBreakdown: `"串焼き": "Spiedini (Yakitori)",
     "つくね月見280": "Tsukune con tuorlo d'uovo 280",
-    "肝レア焼280": "Spiedino di fegato raro 280",
+    "肝レア焼280": "Spiedino di fegato poco cotto 280",
     "むねい焼ょ": "Petto di pollo alla griglia",
     "もも肉タルタルチ280": "Coscia di pollo alla griglia con salsa tartara 280",
     "ささみしぎ焼380": "Filetto di pollo alla griglia 380",
@@ -78,7 +78,7 @@ export default {
     "えび": "Gamberi",
     "オクラ": "Okra",
     "うずら": "Uovo di quaglia",
-    "むねわさび": "Seno di pollo con wasabi",
+    "むねわさび": "Petto di pollo al wasabi",
     "しいたけ": "Funghi Shiitake",
     "LES 160": "LES 160 [taglio speciale]",
     "こころ": "Cuore",
@@ -96,9 +96,9 @@ export default {
             photolateResultImageAlt: 'Interfaccia di traduzione Photolate che mostra una tavola del manga One Piece con testo giapponese rilevato e tradotto in italiano. La traduzione recita "Il leggendario tesoro One Piece sarà ottenuto da chi lo troverà!!" con informazioni di background culturale che spiegano il contesto della serie manga.',
             translatedText: `"Il leggendario tesoro
     One Piece"
-    sarà ottenuto
-    da colui che
-    lo troverà!!
+    sarà trovato
+    da chi lo
+    cercherà!!
     ONE PIECE`,
             backgroundInfo: `Questo testo è tratto dalla popolare serie manga e anime 'One Piece' creata da Eiichiro Oda. 'One Piece' si riferisce al leggendario tesoro che si dice sia di inestimabile valore, ricercato dai pirati nella serie.`,
             linesBreakdown: `ひとつなぎの大秘宝: 'Il leggendario tesoro One Piece'
@@ -134,24 +134,24 @@ export default {
             sourceImageAlt: 'Pagina di diario cinese scritta a mano su carta a righe con inchiostro blu, che mostra riflessioni spirituali e preghiere personali datate 30 luglio 2020',
             photolateResultImageAlt: 'Interfaccia di traduzione Photolate che mostra un diario cinese scritto a mano con testo rilevato a sinistra e traduzione in italiano a destra, che mostra riflessioni spirituali con regioni di testo evidenziate e strumenti di traduzione',
             translatedText: `Non c'è nulla che tu possa controllare, tutto è nelle mani di Dio
-    Non serve preoccuparsi, perché è detto di non temere il domani
-    Il domani avrà i suoi piani, basta affidarsi a Dio in tutto e seguire la Sua volontà.
+    Non preoccuparti, perché è detto di non temere il domani
+    Il domani avrà i suoi piani, basta affidarsi a Dio e seguire la Sua volontà.
     Sento che la mia fede in Dio
-    è molto piccola, ogni giorno porto un guscio pesante, usando la mia mente non molto intelligente per pensare a questioni personali, familiari e mondane,
-    Più penso, più il guscio diventa pesante, fino a quando riesco a malapena a respirare. Dio, ti chiedo
+    è molto piccola, ogni giorno porto un peso, usando la mia mente limitata per pensare a questioni personali, familiari e mondane,
+    Più penso, più il peso diventa insostenibile, fino a quando riesco a malapena a respirare. Dio, ti chiedo
     di aiutarmi, di guardare a te in ogni cosa. Mi sento come se
-    il mio guscio si stesse
+    questo guscio si stesse
     strappando poco a poco, staccandosi gradualmente,
-    (ma è molto doloroso, molto doloroso, un dolore straziante
-    Questa sensazione è come una cicala che muta il suo guscio, sperimentando
-    il dolore di essere schiacciata, quasi soffocando, so che questo
-    processo non si compie in una notte, chiedo a Dio di aiutarmi,
-    sostenermi in questo doloroso processo di trasformazione,
-    perché so che, affidandomi solo a me stessa, non potrò mai completarlo.
-    Chiedo a Dio di farmi affidare completamente a te il prima possibile
-    e non più a me stessa.
-    Per diventare una persona che non si preoccupa più, piena
-    di gioia, colma di pace divina!
+    (ed è molto doloroso, un dolore straziante
+    Questa sensazione è come una cicala che muta, sperimentando
+    il dolore di essere compressa, quasi soffocando. So che questo
+    processo non si compie in una notte. Chiedo a Dio di aiutarmi,
+    sostenermi in questa dolorosa trasformazione,
+    perché affidandomi solo a me stessa, non potrò mai completarla.
+    Chiedo a Dio di farmi riporre piena fiducia in te
+    e non più in me stessa.
+    Per diventare una persona serena, piena
+    di gioia e colma di pace divina!
     Prego nel nome del Signore Gesù! Amen!`,
             backgroundInfo: `Questo testo sembra essere una preghiera o riflessione personale, che esprime un profondo senso di fiducia in Dio e la lotta della trasformazione personale. L'immagine della cicala che muta il guscio è una metafora del doloroso processo di crescita personale e rinnovamento spirituale.`,
             linesBreakdown: `Non c'è nulla che puoi controllare, tutto è nelle mani di Dio

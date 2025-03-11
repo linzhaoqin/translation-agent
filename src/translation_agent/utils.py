@@ -24,7 +24,7 @@ client = anthropic.Anthropic(
     api_key=ANTHROPIC_API_KEY,
 )
 
-MAX_TOKENS_PER_CHUNK = 2400  # 输入分块的最大token数
+MAX_TOKENS_PER_CHUNK = 2000  # 输入分块的最大token数
 MAX_OUTPUT_TOKENS = 8192      # API返回内容的最大token限制
 # https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
 
@@ -139,8 +139,8 @@ def save_validation_report(report_content: str):
 def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
-    model: str = "claude-3-5-sonnet-20241022",
-    temperature: float = 0.5,
+    model: str = "claude-3-7-sonnet-20250219",
+    temperature: float = 0.3,
     json_mode: bool = False,
 ) -> Union[str, dict]:
     """
@@ -452,9 +452,8 @@ def multichunk_initial_translation(
 
     translation_prompt = """Your task is to provide a professional translation from {source_lang} to {target_lang} of PART of a text.
 
-The source text is below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>. Translate only the part within the source text
-delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS>. You can use the rest of the source text as context, but do not translate any
-of the other text. Do not output anything other than the translation of the indicated part of the text.
+The source text snippet below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, contains only a portion of the full document with some context.
+Translate only the part within this snippet delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS>. You can use the surrounding text as context, but do not translate any of the other text. Do not output anything other than the translation of the indicated part of the text.
 
 <SOURCE_TEXT>
 {tagged_text}
@@ -470,13 +469,17 @@ Output only the translation of the portion you are asked to translate, and nothi
 
     translation_chunks = []
     for i in range(len(source_text_chunks)):
-        # Will translate chunk i
+        # 有限上下文窗口
+        context_window = 1  # 前后各保留1个块作为上下文
+        start_idx = max(0, i - context_window)
+        end_idx = min(len(source_text_chunks), i + context_window + 1)
+
         tagged_text = (
-            "".join(source_text_chunks[0:i])
+            "".join(source_text_chunks[start_idx:i])
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1:])
+            + "".join(source_text_chunks[i+1:end_idx])
         )
 
         prompt = translation_prompt.format(
@@ -520,9 +523,8 @@ You will be provided with a source text and its translation and your goal is to 
         reflection_prompt = """Your task is to carefully read a source text and part of a translation of that text from {source_lang} to {target_lang}, and then give constructive criticisms and helpful suggestions for improving the translation.
 The final style and tone of the translation should match the style of {target_lang} colloquially spoken in {country}.
 
-The source text is below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, and the part that has been translated
-is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the rest of the source text
-as context for critiquing the translated part.
+The source text snippet below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, contains only a portion of the full document.
+The part that has been translated is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the surrounding text as context for critiquing the translated part.
 
 <SOURCE_TEXT>
 {tagged_text}
@@ -551,9 +553,8 @@ Output only the suggestions and nothing else."""
     else:
         reflection_prompt = """Your task is to carefully read a source text and part of a translation of that text from {source_lang} to {target_lang}, and then give constructive criticism and helpful suggestions for improving the translation.
 
-The source text is below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, and the part that has been translated
-is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the rest of the source text
-as context for critiquing the translated part.
+The source text snippet below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, contains only a portion of the full document.
+The part that has been translated is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the surrounding text as context for critiquing the translated part.
 
 <SOURCE_TEXT>
 {tagged_text}
@@ -581,13 +582,17 @@ Output only the suggestions and nothing else."""
 
     reflection_chunks = []
     for i in range(len(source_text_chunks)):
-        # Will translate chunk i
+        # 有限上下文窗口
+        context_window = 1  # 前后各保留1个块作为上下文
+        start_idx = max(0, i - context_window)
+        end_idx = min(len(source_text_chunks), i + context_window + 1)
+
         tagged_text = (
-            "".join(source_text_chunks[0:i])
+            "".join(source_text_chunks[start_idx:i])
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1:])
+            + "".join(source_text_chunks[i+1:end_idx])
         )
         if country != "":
             prompt = reflection_prompt.format(
@@ -640,9 +645,8 @@ def multichunk_improve_translation(
     improvement_prompt = """Your task is to carefully read, then improve, a translation from {source_lang} to {target_lang}, taking into
 account a set of expert suggestions and constructive criticisms. Below, the source text, initial translation, and expert suggestions are provided.
 
-The source text is below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, and the part that has been translated
-is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the rest of the source text
-as context, but need to provide a translation only of the part indicated by <TRANSLATE_THIS> and </TRANSLATE_THIS>.
+The source text snippet below, delimited by XML tags <SOURCE_TEXT> and </SOURCE_TEXT>, contains only a portion of the full document.
+The part that has been translated is delimited by <TRANSLATE_THIS> and </TRANSLATE_THIS> within the source text. You can use the surrounding text as context, but need to provide a translation only of the part indicated by <TRANSLATE_THIS> and </TRANSLATE_THIS>.
 
 <SOURCE_TEXT>
 {tagged_text}
@@ -676,13 +680,17 @@ Output only the new translation of the indicated part and nothing else."""
 
     translation_2_chunks = []
     for i in range(len(source_text_chunks)):
-        # Will translate chunk i
+        # 有限上下文窗口
+        context_window = 1  # 前后各保留1个块作为上下文
+        start_idx = max(0, i - context_window)
+        end_idx = min(len(source_text_chunks), i + context_window + 1)
+
         tagged_text = (
-            "".join(source_text_chunks[0:i])
+            "".join(source_text_chunks[start_idx:i])
             + "<TRANSLATE_THIS>"
             + source_text_chunks[i]
             + "</TRANSLATE_THIS>"
-            + "".join(source_text_chunks[i + 1:])
+            + "".join(source_text_chunks[i+1:end_idx])
         )
 
         prompt = improvement_prompt.format(
