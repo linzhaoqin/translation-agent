@@ -283,7 +283,7 @@ def save_translation(translation, output_file):
         f.write(f"{translation}")
 
 
-def translate_to_languages(start_index=0, end_index=None, source_locale_code="en"):
+def translate_to_languages(start_index=0, end_index=None, source_locale_code="en", source_file_name=None, source_folder="sample-texts"):
     """
     翻译到指定范围内的语言
 
@@ -291,6 +291,8 @@ def translate_to_languages(start_index=0, end_index=None, source_locale_code="en
         start_index: 开始的语言索引（包含）
         end_index: 结束的语言索引（不包含），如果为None则翻译到最后
         source_locale_code: 源语言代码，默认为'en'（英语）
+        source_file_name: 源文件名，如果提供则直接使用该文件，否则使用语言对应的文件
+        source_folder: 源文件所在文件夹，默认为'sample-texts'
     """
     # 获取源语言信息
     source_locale = next(
@@ -309,7 +311,19 @@ def translate_to_languages(start_index=0, end_index=None, source_locale_code="en
 
     # 获取文件路径
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_file = f"sample-texts/{source_locale['file']}"
+
+    # 使用提供的文件名或默认的语言文件
+    if source_file_name:
+        input_file = os.path.join(source_folder, source_file_name)
+        # 拆分文件名和扩展名，用于后续生成输出文件名
+        file_name_parts = os.path.splitext(source_file_name)
+        file_prefix = file_name_parts[0]
+        file_ext = file_name_parts[1]
+        custom_file = True
+    else:
+        input_file = os.path.join(source_folder, source_locale['file'])
+        custom_file = False
+
     input_path = os.path.join(script_dir, input_file)
 
     # 读取源文本
@@ -327,8 +341,16 @@ def translate_to_languages(start_index=0, end_index=None, source_locale_code="en
             continue
 
         target_locale = locales[i]
-        output_file = target_locale["file"]
-        output_path = os.path.join(script_dir, output_file)
+
+        # 根据是否使用自定义文件来确定输出文件名
+        if custom_file:
+            # 使用 {原文件名前缀}-{语言代码}.{原文件扩展名} 的格式
+            output_file = f"{file_prefix}-{target_locale['code']}{file_ext}"
+            output_path = os.path.join(script_dir, output_file)
+        else:
+            # 使用默认的语言文件命名
+            output_file = target_locale["file"]
+            output_path = os.path.join(script_dir, output_file)
 
         print(
             f"\n翻译到: {target_locale['englishName']} ({target_locale['country']})")
@@ -365,5 +387,5 @@ if __name__ == "__main__":
     # translate_to_languages(start_index=20)
 
     # 默认示例：翻译一部分语言
-    translate_to_languages(start_index=20, end_index=None,
-                           source_locale_code="en")
+    translate_to_languages(start_index=2, end_index=3,
+                           source_locale_code="en", source_file_name="how-to-translate-images.md")
