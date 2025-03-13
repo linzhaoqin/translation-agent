@@ -1,0 +1,12 @@
+=== 键值校验报告 ===
+源文件: en.ts
+检查时间: 2025-03-12 01:15:00
+
+
+=== 多余的键值 ===
+- supportedScenes.spanishNote.line_1
+- supportedScenes.spanishNote.line_2
+- supportedScenes.spanishNote.line_3
+- supportedScenes.spanishNote.line_4
+- supportedScenes.spanishNote.line_5
+- supportedScenes.spanishNote.line_6
