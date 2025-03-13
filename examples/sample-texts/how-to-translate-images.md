@@ -1,19 +1,26 @@
 ---
-title: "How to Translate Images with Cultural Context: Beyond Basic Translation [2025]"
-description: "Don't just translate images - understand them. Get cultural context with every translation, from menus to signs. Try free with 10 translations."
-author: "Photolate"
-date: "2025-01-12"
+title: &title "How to Translate Images with Cultural Context: Beyond Basic Translation [2025]"
+description: &desc "Don't just translate images - understand them. Get cultural context with every translation, from menus to signs. Try free with 10 translations."
+date: &date "2025-01-25"
+author: &author "Jane Smith"
 head:
   meta:
-    - name: "keywords"
-      content: "AI Photo Translate, Cultural Context, Blog"
     - name: "robots"
       content: "index, follow"
     - name: "author"
-      content: "Photolate"
+      content: *author
     - name: "date"
-      content: "2025-01-12"
+      content: *date
+schemaOrg:
+  - type: "BlogPosting"
+    headline: *title
+    description: *desc
+    author:
+      type: "Person"
+      name: *author
+    datePublished: *date
 ---
+
 
 # Lost in Translation? Your Guide to Converting Images to English
 
@@ -45,8 +52,8 @@ Our key features:
 
 Want proof? Check our real-world tests:
 
-- [Best Korean Picture Translate App 2025: Real-World Tests in Korea](https://www.Photolate/blog/korean)
-- [Best Japanese Image Translator 2024: Real-World Tests in Japan](https://www.photo-translate.top/blog/japanese)
+- [Best Korean Picture Translate App 2025: Real-World Tests in Korea](https://www.photo-translate.top/en/blog/korean)
+- [Best Japanese Image Translator 2024: Real-World Tests in Japan](https://www.photo-translate.top/en/blog/japanese)
 
 The results speak for themselves. Photolate leads in accuracy and features.
 
@@ -126,22 +133,7 @@ No need to select words one by one.
 
 ![Photolate OCR results interface showing a Japanese menu with detected text highlighted in cyan boxes. Below displays the extracted Japanese text including items like "おすすけ", "あじ刺(一で)" and "かれい薄造り", with language selection showing Japanese to English translation mode. Features a clean list layout with copy and delete options.](/images/articles/how-to-translate-images/auto_select_the_text_with_auto_detect.webp)
 
-# Step 4: Pick Your Language(Optional)
-
-Your browser language is the default target.
-
-Want a different language?
-
-- Click the language button
-- Choose from 100+ options
-- From English to Arabic
-- From Spanish to Hindi
-
-| English                                                                                                                                                                                                                                                                                                                              | Spanish                                                                                                                                                                                                                                                                                                                                   | Hindi                                                                                                                                                                                                                                                                                                                      | Arabic                                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Photolate mobile app interface showing language selection menu with English highlighted. The interface displays a Japanese menu with OCR detection boxes and various language options including Dogri, Dutch, English, Estonian, Faroese, Fijian and Filipino.](/images/articles/how-to-translate-images/target_lang_english.webp) | ![Photolate mobile app interface showing language selection menu with Spanish (Español) highlighted. The interface shows the same Japanese menu with OCR detection and language options including Slovenščina, Somali, Spanish, Swahili, Swedish, Tahitian and Tamil.](/images/articles/how-to-translate-images/target_lang_spanish.webp) | ![Photolate mobile app interface showing language selection menu with Hindi (हिन्दी) highlighted. The interface displays the Japanese menu with OCR boxes and language options including Hausa, Hebrew, Hindi, Hmong Daw, Hungarian, Icelandic and Igbo.](/images/articles/how-to-translate-images/target_lang_hindi.webp) | ![Photolate mobile app interface showing language selection menu with Arabic (العربية) highlighted. The interface shows the Japanese menu with OCR detection and language options including Shqip, Amharic, Arabic, Armenian, Assamese, Azerbaijani and Bangla.](/images/articles/how-to-translate-images/target_lang_arabic.webp) |
-
-# Step 5: Get Your Translation
+# Step 4: Get Your Translation
 
 Found a red translate button at the bottom? That's it.
 
@@ -167,51 +159,6 @@ No other translator explains the cultural background.
 | Click "Translate" Button                                                                                                                                                                                                                                                                                            | Translation Results                                                                                                                                                                                                                                                                          | Cultural Background Info                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![Photolate OCR detection interface showing a Japanese handwritten menu with cyan highlight boxes around detected text. Japanese characters are listed below with a red translate button at the bottom, demonstrating the text extraction process.](/images/articles/how-to-translate-images/translate_button.webp) | ![Photolate translation results showing Japanese menu items translated to English, with original text highlighted in cyan and translations listed below including sashimi, grilled seafood and other traditional dishes.](/images/articles/how-to-translate-images/all_text_translated.webp) | ![Photolate translation results page showing English translations of Japanese menu items including whitebait tempura and sliced pork. Features a detailed cultural background explanation about Japanese restaurant menus and cooking styles like Nanban cuisine.](/images/articles/how-to-translate-images/all_text_bg_info.webp) |
-
-# Pro Tips
-
-**1. Copy Text Easily**
-
-Need the original text? Just click the copy icon next to each word.
-
-Perfect for saving or sharing.
-
-![Photolate OCR results interface showing extracted Japanese text with copy functionality, demonstrated by a "Copied!" notification. Features cyan-highlighted text boxes on the menu image and a complete list of detected Japanese characters with copy and delete options.](/images/articles/how-to-translate-images/all_text_copied_mod.webp)
-
-**2. Translate Specific Parts**
-
-Sometimes you only need one item from a long menu - like "黄鯛塩焼き".
-
-Here's how:
-
-- Click "Unselect All" first
-- Pick just the text you want
-- Hit translate again
-
-Only Photolate gives you this freedom:
-
-- Choose what to translate
-- Focus on what matters
-- Save time on long texts
-
-| Unselect All Text                                                                                                                                                                                                                                                                     | Select Single Word                                                                                                                                                                                                                                                                    | Single Word Translation                                                                                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Photolate OCR interface showing an unselect button to clear all text selections, with red dotted boxes indicating deselected Japanese menu items. Features language selection options and a clean interface design.](/images/articles/how-to-translate-images/unselect_button.webp) | ![Photolate interface showing single word selection feature, with "黄���塩焼き" highlighted in cyan while other menu items remain outlined in red dotted lines, demonstrating precise text selection capability.](/images/articles/how-to-translate-images/single_word_selected.webp) | ![Photolate single word translation result showing "Grilled Yellow Sea Bream" with detailed cultural background information explaining this traditional Japanese dish's preparation method and its significance in Japanese cuisine.](/images/articles/how-to-translate-images/single_word_translated.webp) |
-
-**3. Access History Anytime**
-
-Every translation is saved automatically.
-
-When is this helpful?
-
-- Checking restaurant menus again
-- Finding that street sign later
-- Sharing translations with friends
-- Looking up past references
-
-All your translations stay organized and easy to find.
-
-![Photolate translation history page displaying a grid of previously translated images including Korean street signs, Japanese warning notices, and product labels. Each thumbnail shows the original image with a timestamp, demonstrating the app's history tracking feature.](/images/articles/how-to-translate-images/history.webp)
 
 # Ready to Try?
 

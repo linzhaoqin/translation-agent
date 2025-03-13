@@ -165,7 +165,8 @@ def get_completion(
 
     # 新增请求信息打印
     print("\n=== API REQUEST ===")
-    print(f"System Message: {system_message[:50]}{'...' if len(system_message) > 50 else ''}")
+    print(
+        f"System Message: {system_message[:50]}{'...' if len(system_message) > 50 else ''}")
     print(f"\nUser Prompt ({len(prompt)} chars):\n{'-'*40}")
     print(f"{prompt[:50]}{'...' if len(prompt) > 50 else ''}")  # 只展示前50个字符
     print("-"*40)
@@ -622,7 +623,7 @@ Output only the suggestions and nothing else."""
         # 计算建议数量但不单独打印
         suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
         print(f"\n块 #{i+1} 生成 {len(suggestions)} 条建议")
-        
+
         reflection_chunks.append(reflection)
 
     return reflection_chunks
@@ -903,16 +904,95 @@ def standalone_validate(source_path: str, translated_path: str) -> None:
         with open(translated_path, 'r', encoding='utf-8') as f:
             translated_content = f.read()
 
+        # 检查键值完整性
         validate_json_keys(
             source_content=source_content,
             translated_content=translated_content,
             source_file=source_path
         )
 
+        # 检查符号闭合性
+        check_result, error_message = check_syntax_balance(translated_content)
+        if not check_result:
+            print(f"⚠️ 符号闭合性检查失败: {error_message}")
+        else:
+            print("✅ 符号闭合性检查通过")
+
     except FileNotFoundError as e:
         print(f"❌ 文件未找到: {str(e)}")
     except Exception as e:
         print(f"❌ 校验失败: {str(e)}")
+
+
+def check_syntax_balance(text: str) -> tuple[bool, str]:
+    """
+    检查文本中的各种符号闭合性（花括号、方括号、圆括号、引号、反引号）
+
+    Args:
+        text: 要检查的文本内容
+
+    Returns:
+        tuple: (是否平衡, 错误信息)
+    """
+    stack = []
+    # 用于处理引号的标记
+    in_single_quote = False
+    in_double_quote = False
+    in_backtick = False
+
+    for i, char in enumerate(text):
+        # 处理开括号
+        if char in '{[(' and not in_single_quote and not in_double_quote and not in_backtick:
+            closing = '}' if char == '{' else ']' if char == '[' else ')'
+            stack.append((closing, i))
+
+        # 处理闭括号
+        elif char in '}])' and not in_single_quote and not in_double_quote and not in_backtick:
+            if not stack:
+                line_num = text[:i].count('\n') + 1
+                return False, f"第 {line_num} 行附近存在未匹配的闭合符 '{char}'"
+
+            expected_char, _ = stack.pop()
+            if char != expected_char:
+                line_num = text[:i].count('\n') + 1
+                return False, f"第 {line_num} 行附近符号不匹配: 期望 '{expected_char}', 实际为 '{char}'"
+
+        # 处理单引号
+        elif char == "'" and not in_double_quote and not in_backtick:
+            # 检查是否转义
+            if i > 0 and text[i-1] == '\\':
+                continue
+            in_single_quote = not in_single_quote
+
+        # 处理双引号
+        elif char == '"' and not in_single_quote and not in_backtick:
+            # 检查是否转义
+            if i > 0 and text[i-1] == '\\':
+                continue
+            in_double_quote = not in_double_quote
+
+        # 处理反引号
+        elif char == '`' and not in_single_quote and not in_double_quote:
+            # 检查是否转义
+            if i > 0 and text[i-1] == '\\':
+                continue
+            in_backtick = not in_backtick
+
+    # 检查是否有未闭合的括号
+    if stack:
+        pos = stack[-1][1]
+        line_num = text[:pos].count('\n') + 1
+        return False, f"第 {line_num} 行附近存在未闭合的 '{text[pos]}'"
+
+    # 检查是否有未闭合的引号
+    if in_single_quote:
+        return False, "存在未闭合的单引号 (')"
+    if in_double_quote:
+        return False, "存在未闭合的双引号 (\")"
+    if in_backtick:
+        return False, "存在未闭合的反引号 (`)"
+
+    return True, ""
 
 
 def debug_chunk_split(source_file_path: str, text: str, max_tokens: int = 500):
