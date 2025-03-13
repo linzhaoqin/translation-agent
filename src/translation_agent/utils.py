@@ -304,19 +304,14 @@ When writing suggestions, ensure keys (before colon) remain unchanged. Focus on 
     reflection = get_completion(
         reflection_prompt, system_message=system_message)
 
-    # 新增完整反思结果打印
-    print("\n=== 专家修改建议（完整） ===")
+    # 只保留完整反思结果打印
+    print("\n=== 专家修改建议 ===")
     print(reflection)  # 打印完整的反思结果
     print("="*50)
 
-    # 保留现有的单条建议打印
-    print("\n=== 专家修改建议（分条） ===")
+    # 计算建议数量但不单独打印
     suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
-    for i, suggestion in enumerate(suggestions, 1):
-        print(f"{i}. {suggestion}")
-    print("="*30)
-
-    print(f"\n生成 {len(suggestions)} 条建议")
+    print(f"生成 {len(suggestions)} 条建议")
 
     return reflection
 
@@ -619,18 +614,13 @@ Output only the suggestions and nothing else."""
 
         reflection = get_completion(prompt, system_message=system_message)
         
-        # 新增每个块的完整反思结果打印
-        print(f"\n=== 块 #{i+1} 专家修改建议（完整） ===")
+        # 只保留完整反思结果打印
+        print(f"\n=== 块 #{i+1} 专家修改建议 ===")
         print(reflection)  # 打印完整的反思结果
         print("="*50)
         
-        # 也打印分条的建议便于查看
-        print(f"\n=== 块 #{i+1} 专家修改建议（分条） ===")
+        # 计算建议数量但不单独打印
         suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
-        for j, suggestion in enumerate(suggestions, 1):
-            print(f"{j}. {suggestion}")
-        print("="*30)
-        
         print(f"\n块 #{i+1} 生成 {len(suggestions)} 条建议")
         
         reflection_chunks.append(reflection)
