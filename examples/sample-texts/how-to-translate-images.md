@@ -1,7 +1,7 @@
 ---
 title: &title "How to Translate Images with Cultural Context: Beyond Basic Translation [2025]"
 description: &desc "Don't just translate images - understand them. Get cultural context with every translation, from menus to signs. Try free with 10 translations."
-date: &date "2025-01-25"
+date: &date "2025-03-17"
 author: &author "Jane Smith"
 head:
   meta:
