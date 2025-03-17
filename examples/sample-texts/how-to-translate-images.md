@@ -50,11 +50,6 @@ Our key features:
 - Support for complex layouts
 - Easy-to-use interface
 
-Want proof? Check our real-world tests:
-
-- [Best Korean Picture Translate App 2025: Real-World Tests in Korea](https://www.photo-translate.top/en/blog/korean)
-- [Best Japanese Image Translator 2024: Real-World Tests in Japan](https://www.photo-translate.top/en/blog/japanese)
-
 The results speak for themselves. Photolate leads in accuracy and features.
 
 Let's see how easy it is to use.
@@ -80,7 +75,7 @@ Here's a detailed breakdown of each step.
 
 # Step 1: Quick Login
 
-Just visit [www.photo-translate.top](https://www.photo-translate.top).
+Just visit <LocalLink to="/">www.photo-translate.top</LocalLink>
 
 Click the Google login button. That's it.
 
@@ -182,4 +177,4 @@ Don't let language barriers stop you.
 Turn any picture into clear meaning.
 Start your first translation now.
 
-Visit [www.photo-translate.top](https://www.photo-translate.top)
+<LocalLink to="/">Visit our website</LocalLink>

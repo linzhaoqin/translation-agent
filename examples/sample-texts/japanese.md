@@ -34,7 +34,7 @@ We tested 4 translation apps with Japan's trickiest texts:
 
 Results after 5 real-world challenges:
 
-- **<a href="https://www.photo-translate.top" target="_blank">Photolate</a>**: Only one that explains cultural meanings. Perfect for understanding local context.
+- **<LocalLink to="/" target="_blank">Photolate</LocalLink>**: Only one that explains cultural meanings. Perfect for understanding local context.
 - Google Translate: Handles basic texts but often misses Japanese nuances.
 - OpenL: Good with printed text, struggles with handwriting.
 - Yandex: Not recommended for Japanese.
@@ -77,7 +77,7 @@ Popular in search results, but less known in practice. While it excels with Euro
 
 A rising star in the AI translation world. Promising features and regular updates, but can it handle real-world Japanese scenarios?
 
-⚡ **<a href="https://www.photo-translate.top" target="_blank">Photolate</a>**
+⚡ **<LocalLink to="/" target="_blank">Photolate</LocalLink>**
 
 The only translator combining Microsoft's advanced OCR with GPT-4o for deep context understanding. Goes beyond word-for-word translation to capture cultural meaning.
 
@@ -351,7 +351,7 @@ For casual travelers who just need basic help, Google Translate's simple functio
 - Always free
 - Good enough for common items
 
-**Best Overall: <a href="https://www.photo-translate.top" target="_blank">Photolate</a>**
+**Best Overall: <LocalLink to="/" target="_blank">Photolate</LocalLink>**
 
 - Best at understanding Japanese culture
 - Excellent text recognition

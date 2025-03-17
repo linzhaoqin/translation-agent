@@ -25,7 +25,7 @@ We tested 4 popular translation apps in real-world scenarios in Korea:
 
 Key findings:
 
-- **<a href="https://www.photo-translate.top" target="_blank">Photolate</a>** : Best overall. Excels at menus and signs. Provides cultural context.
+- **<LocalLink to="/" target="_blank">Photolate</LocalLink>** : Best overall. Excels at menus and signs. Provides cultural context.
 - Google Translate: Reliable for basic translations. Good free option.
 - Papago: Good with common phrases. May miss cultural nuances.
 - Yandex Translate: Poor performance with Korean text.
@@ -68,7 +68,7 @@ Here are the 4 translation apps in our test:
 
 The most widely used translation app worldwide. We used it as our baseline for comparison.
 
-⚡ **<a href="https://www.photo-translate.top" target="_blank">Photolate</a>**
+⚡ **<LocalLink to="/" target="_blank">Photolate</LocalLink>**
 
 The only translation app that provides cultural context alongside translations. This unique feature helps users understand not just what things mean, but why they matter.
 
@@ -298,7 +298,7 @@ For basic translations:
 - Both are free and reliable for simple text
 
 For complex situations:
-**<a href="https://www.photo-translate.top" target="_blank">Photolate</a>** stands out when you need:
+**<LocalLink to="/" target="_blank">Photolate</LocalLink>** stands out when you need:
 
 - Accurate OCR for challenging text
 - Cultural context and background information
