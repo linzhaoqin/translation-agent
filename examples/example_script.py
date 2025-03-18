@@ -386,6 +386,6 @@ if __name__ == "__main__":
     # 4. 从特定索引开始翻译到最后
     # translate_to_languages(start_index=20)
 
-    # 默认示例：翻译一部分语言
-    translate_to_languages(start_index=6, end_index=12,
+    # 默认示例：翻译一部分语言（翻译到了"hr",）
+    translate_to_languages(start_index=18, end_index=23,
                            source_locale_code="en", source_file_name="how-to-translate-images.md")
