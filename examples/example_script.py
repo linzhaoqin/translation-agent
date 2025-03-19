@@ -387,5 +387,5 @@ if __name__ == "__main__":
     # translate_to_languages(start_index=20)
 
     # 默认示例：翻译一部分语言（上次成功翻译了4种语言：罗马尼亚语、斯洛伐克语、保加利亚语和克罗地亚语，翻译到了"hr",）
-    translate_to_languages(start_index=18, end_index=23,
+    translate_to_languages(start_index=23, end_index=25,
                            source_locale_code="en", source_file_name="how-to-translate-images.md")
