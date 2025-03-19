@@ -56,8 +56,8 @@ We tested these apps in three common scenarios you'll face in Korea:
 
 Below are the actual test images we used:
 
-| Korean Beverage                                                                                                                                                      | Street Art                                                                                                                                                                                              | Restaurant Menu                                                                                                                                                                                 |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Korean Beverage | Street Art | Restaurant Menu |
+|-----------------|------------|-----------------|
 | ![Busan Saengtak bottle, a 750ml Korean alcoholic beverage combining soju and makgeolli characteristics with green label](/images/articles/korean/korean_drink.webp) | ![Pink heart-shaped street art sign with Korean text reading 'Well done, you did great today' in cute dialect style, decorated with small blue hearts](/images/articles/korean/korean_street_sign.webp) | ![Traditional Korean restaurant menu board written in chalk, showing prices for pork belly sets, LA galbi, and side dishes with prices in Korean won](/images/articles/korean/korean_menu.webp) |
 
 # Apps We Tested
@@ -297,8 +297,7 @@ For basic translations:
 - Google Translate and Papago work well
 - Both are free and reliable for simple text
 
-For complex situations:
-**<LocalLink to="/" target="_blank">Photolate</LocalLink>** stands out when you need:
+For complex situations:**<LocalLink to="/" target="_blank">Photolate</LocalLink>** stands out when you need:
 
 - Accurate OCR for challenging text
 - Cultural context and background information
@@ -307,8 +306,8 @@ For complex situations:
 
 Try it yourself - it's free to use.
 
-| Korean Beverage                                                                                                                                                                                                                                                                          | Korean Street Sign                                                                                                                                                                                                                                           | Korean Menu                                                                                                                                                                                           |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Korean Beverage | Street Art | Restaurant Menu |
+|-----------------|------------|-----------------|
 | ![Photolate interface displaying Korean text detection boxes on green bottle label, showing translations 'Busan', 'Status', 'Raw Makgeolli' with detailed cultural background information about traditional Korean rice wine](/images/articles/korean/photo-translate_korean_drink.webp) | ![Photolate app interface showing Korean text translation with detected text boxes, English translation reading 'It's okay, You've done well today' and cultural context explanation below](/images/articles/korean/photo-translate_korean_street_sign.webp) | ![Photolate result showing Korean menu translation with highlighted text detection and cultural background information about Korean dishes](/images/articles/korean/photo-translate_korean_menu.webp) |
 
 # Ready for Your Korea Trip?
