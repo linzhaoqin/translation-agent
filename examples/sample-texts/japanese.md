@@ -252,6 +252,8 @@ Imagine holding this paper full of characters. Is it good luck? Bad luck? And wh
 
 ![Traditional Japanese omikuji fortune paper with detailed calligraphy and predictions](/images/articles/japanese/omikuji.webp)
 
+Let's examine what each translation app showed:
+
 <br>
 
 | Google Translate | Photolate | OpenL Translate | Yandex Translate |

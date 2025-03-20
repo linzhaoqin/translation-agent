@@ -1,17 +1,25 @@
 ---
-title: "Best Photo Translation Apps for Korean Culture: Real Tests [2025]"
-description: "We tested 4 Korean translation apps in real Seoul situations. See which one truly understands Korean culture, from street signs to traditional dishes."
-date: "2025-01-12"
+title: &title "Best Photo Translation Apps for Korean Culture: Real Tests [2025]"
+description: &desc "We tested 4 Korean translation apps in real Seoul situations. See which one truly understands Korean culture, from street signs to traditional dishes."
+date: &date "2025-03-20"
+author: &author "Jane Smith"
+category: "comparison"
 head:
   meta:
-    - name: "keywords"
-      content: "AI Photo Translate, Cultural Context, Blog, Korean"
     - name: "robots"
       content: "index, follow"
     - name: "author"
-      content: "Photolate"
+      content: *author
     - name: "date"
-      content: "2025-1-12"
+      content: *date
+schemaOrg:
+  - type: "BlogPosting"
+    headline: *title
+    description: *desc
+    author:
+      type: "Person"
+      name: *author
+    datePublished: *date
 ---
 
 # TL;DR
@@ -56,6 +64,8 @@ We tested these apps in three common scenarios you'll face in Korea:
 
 Below are the actual test images we used:
 
+<br>
+
 | Korean Beverage | Street Art | Restaurant Menu |
 |-----------------|------------|-----------------|
 | ![Busan Saengtak bottle, a 750ml Korean alcoholic beverage combining soju and makgeolli characteristics with green label](/images/articles/korean/korean_drink.webp) | ![Pink heart-shaped street art sign with Korean text reading 'Well done, you did great today' in cute dialect style, decorated with small blue hearts](/images/articles/korean/korean_street_sign.webp) | ![Traditional Korean restaurant menu board written in chalk, showing prices for pork belly sets, LA galbi, and side dishes with prices in Korean won](/images/articles/korean/korean_menu.webp) |
@@ -90,11 +100,15 @@ Let's start with a common challenge: translating a Korean beverage label.
 
 Here's how each app performed:
 
-| Google Translate                                                                                                                                                                                                                                 | Photolate                                                                                                                                                                                                                                                                                | Yandex Translate                                                                                                                                                                                                                                          | Papago                                                                                                                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<br>
+
+| Google Translate | Photolate | Yandex Translate | Papago |
+|-----------------|-----------|------------------|--------|
 | ![Google Lens translation showing Korean beverage label with text 'busan', 'Raw makgeolli', and incorrectly translated 'raw fish' on green bottle label against blurred restaurant background](/images/articles/korean/google_korean_drink.webp) | ![Photolate interface displaying Korean text detection boxes on green bottle label, showing translations 'Busan', 'Status', 'Raw Makgeolli' with detailed cultural background information about traditional Korean rice wine](/images/articles/korean/photo-translate_korean_drink.webp) | ![Yandex Translate app showing Korean beverage bottle with green label, displaying text 'Busan' and hashtag about yeast and lactic acid bacteria, with 6% alcohol content and 750ml volume information](/images/articles/korean/yandex_korean_drink.webp) | ![Papago translation interface showing Korean beverage bottle with green label translated as 'Busan fresh makgeolli', including text about homo and lactobacilli on live membrane, 6% alcohol content and 750ml volume](/images/articles/korean/papago_korean_drink.webp) |
 
 **Translation Results**
+
+<br>
 
 | Text on Bottle        | Google Translate | Photolate     | Yandex Translate | Papago          |
 | --------------------- | ---------------- | ------------- | ---------------- | --------------- |
@@ -128,8 +142,10 @@ Korean streets are full of inspirational messages. Here's a typical example:
 
 This decorative message says "It's okay, you did well today." Let's see how each app handles artistic text:
 
-| Google Translate                                                                                                                                                                                               | Photolate                                                                                                                                                                                                                                                    | Yandex Translate                                                                                                                                                                                     | Papago                                                                                                                                                                                                                 |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<br>
+
+| Google Translate | Photolate | Yandex Translate | Papago |
+|-----------------|-----------|------------------|--------|
 | ![Google Lens interface showing Korean text translated to English as 'are you okay' and 'You did well today' overlaid on a pink heart street art sign](/images/articles/korean/google_korean_street_sign.webp) | ![Photolate app interface showing Korean text translation with detected text boxes, English translation reading 'It's okay, You've done well today' and cultural context explanation below](/images/articles/korean/photo-translate_korean_street_sign.webp) | ![Yandex Translate app showing error message 'Could not recognize text in image' with sad emoji icon overlaid on pink heart street art sign](/images/articles/korean/yandex_korean_street_sign.webp) | ![Papago translation interface displaying Korean text translated as 'it's cold' and 'You did a great job today' with translation controls at bottom of screen](/images/articles/korean/papago_korean_street_sign.webp) |
 
 **Translation Results:**
@@ -171,29 +187,33 @@ These handwritten menu boards are common in local Korean restaurants. With dense
 
 Here's how each app performed:
 
-| Google Translate                                                                                                                                                                                            | Photolate                                                                                                                                                                                             | Yandex Translate                                                                                                                                                                           | Papago                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+<br>
+
+| Google Translate | Photolate | Yandex Translate | Papago |
+|-----------------|-----------|------------------|--------|
 | ![Google Lens translation of a Korean menu showing English text overlaid on the original menu, with translations like "Pork ribs" and "Five layer bossam"](/images/articles/korean/google_korean_menu.webp) | ![Photolate result showing Korean menu translation with highlighted text detection and cultural background information about Korean dishes](/images/articles/korean/photo-translate_korean_menu.webp) | ![Yandex Translate menu translation showing English text overlaid on Korean menu with translations like "Adjacent" and "Pepper Jangjang"](/images/articles/korean/yandex_korean_menu.webp) | ![Papago translation interface showing Korean menu translated to English with terms like "Grilled pork belly meat" and "Red Chili Paste jigae"](/images/articles/korean/papago_korean_menu.webp) |
 
 Let's compare how each app translated key menu items:
 
 **Detailed Translation Comparison**
 
-| **Korean Text**                                    | **Google Translate**                                                | **Photolate**                                                | **Yandex Translate**                                         | **Papago**                                                                  |
-| -------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| ☆ 돼지갈비는                                       | Pork ribs                                                           | Pork Ribs                                                    | Pork ribs                                                    | Pork ribs                                                                   |
-| 2 인분'부터                                        | From '2 servings'                                                   | 2 servings' minimum                                          | from 2 days                                                  | From 2 servings                                                             |
-| 오겹 글보쌈                                        | Ogyeopgul Bossam                                                    | Pork Belly Bossam                                            | Adjacent                                                     | Grilled pork belly meat                                                     |
-| 고추장찌개                                         | Gochujang stew                                                      | Gochujang Stew                                               | Pepper Jangjang                                              | Red Chili Paste jigae                                                       |
-| 오겹 보쌈                                          | Five layer bossam                                                   | Pork Belly Bossam                                            | Bosam                                                        | Grilled pork elly meat                                                      |
-| 꽁치찌개                                           | Saury stew                                                          | Mackerel Stew                                                | /                                                            | Saury stew                                                                  |
-| 추가메뉴                                           | Additional menu                                                     | Additional Menu                                              | Chugai Menu                                                  | Additional menu                                                             |
-| LA갈비 (1인분 280g) <br> <br>->최상급 프라임등급   | LA Galbi (280g per sering)<br><br>Top Prime Grade                   | LA Galbi (1 serving 280g) <br><br>Top-grade Prime            | LA ribs (/Introductory 28°3)<br><br>Real Product Prime Grade | LA Galbi (280g per serving)<br><br>Top Prime rating                         |
-| 오이스팸                                           | Cucumber Spam                                                       | Oyster Spam                                                  | Oystem                                                       | Cucumberfam                                                                 |
-| 군만두                                             | Grilled dumplings                                                   | Fried Dumplings 12                                           | Kumandu                                                      | Fried dumplings                                                             |
+<br>
+
+| **Korean Text** | **Google Translate** | **Photolate** | **Yandex Translate** | **Papago** |
+|----------------|---------------------|--------------|---------------------|------------|
+| ☆ 돼지갈비는 | Pork ribs | Pork Ribs | Pork ribs | Pork ribs |
+| 2 인분'부터 | From '2 servings' | 2 servings' minimum | from 2 days | From 2 servings |
+| 오겹 글보쌈 | Ogyeopgul Bossam | Pork Belly Bossam | Adjacent | Grilled pork belly meat |
+| 고추장찌개 | Gochujang stew | Gochujang Stew | Pepper Jangjang | Red Chili Paste jigae |
+| 오겹 보쌈 | Five layer bossam | Pork Belly Bossam | Bosam | Grilled pork elly meat |
+| 꽁치찌개 | Saury stew | Mackerel Stew | / | Saury stew |
+| 추가메뉴 | Additional menu | Additional Menu | Chugai Menu | Additional menu |
+| LA갈비 (1인분 280g) <br> <br>->최상급 프라임등급 | LA Galbi (280g per sering)<br><br>Top Prime Grade | LA Galbi (1 serving 280g) <br><br>Top-grade Prime | LA ribs (/Introductory 28°3)<br><br>Real Product Prime Grade | LA Galbi (280g per serving)<br><br>Top Prime rating |
+| 오이스팸 | Cucumber Spam | Oyster Spam | Oystem | Cucumberfam |
+| 군만두 | Grilled dumplings | Fried Dumplings 12 | Kumandu | Fried dumplings |
 | 돼지갈비(1인분 300g) <br> <br>->질리지 않는 매콤함 | Pork ribs (3009 per person)<br><br>->Spiciness that doesn't get old | Pork Ribs (1 serving 300g) <br><br>->Unforgettable Spiciness | Not ribs (/2 3m3) <br><br>->I don't want to get tired of it. | Pork ribs (300 g for 1 person)<br><br>->a tartness that never gets tired of |
-| 짜파게티                                           | Chapagetti                                                          | Jjapagetti                                                   | Tsapareri                                                    | Chapagetti                                                                  |
-| 신라면                                             | Shin Ramyun                                                         | Shin Ramyun                                                  | If it's God.                                                 | Shin Ramen                                                                  |
+| 짜파게티 | Chapagetti | Jjapagetti | Tsapareri | Chapagetti |
+| 신라면 | Shin Ramyun | Shin Ramyun | If it's God. | Shin Ramen |
 
 **Google Translate**
 
@@ -287,6 +307,8 @@ For complex situations: **<LocalLink to="/" target="_blank">Photolate</LocalLink
 - Cultural context and background information
 - Traditional Korean terms
 - Challenging text recognition
+
+<br>
 
 | Korean Beverage | Street Art | Restaurant Menu |
 |-----------------|------------|-----------------|
