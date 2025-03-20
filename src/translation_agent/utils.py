@@ -210,13 +210,14 @@ def one_chunk_initial_translation(
         source_lang} to {target_lang}."
 
     translation_prompt = f"""This is an {source_lang} to {target_lang} translation, please provide the {target_lang} translation for this text. \
-Do not provide any explanations or text apart from the translation. PRESERVE ALL KEYS BEFORE COLONS.
+Do not provide any explanations or text apart from the translation. PRESERVE ALL KEYS BEFORE COLONS AND MAINTAIN ALL EMPTY LINES.
 
 The source text delimited by XML tags <SOURCE_TEXT></SOURCE_TEXT> are as follows:
 <SOURCE_TEXT>
 {source_text}
 </SOURCE_TEXT>
 
+Your translation must preserve all empty lines and formatting from the original text.
 """
 
     translation = get_completion(
@@ -252,7 +253,7 @@ def one_chunk_reflect_on_translation(
 You will be provided with a source text and its translation and your goal is to improve the translation."
 
     if country != "":
-        reflection_prompt = f"""Your task is to carefully read a source text and a translation from {source_lang} to {target_lang}, and then give constructive criticism and helpful suggestions to improve the translation. \
+        reflection_prompt = f"""Your task is to carefully read a source text and a translation from {source_lang} to {target_lang}, and then give constructive criticisms and helpful suggestions to improve the translation. \
 The final style and tone of the translation should match the style of {target_lang} colloquially spoken in {country}.
 
 The source text and initial translation, delimited by XML tags <SOURCE_TEXT></SOURCE_TEXT> and <TRANSLATION></TRANSLATION>, are as follows:
@@ -367,6 +368,8 @@ Please take into account the expert suggestions when editing the translation. Ed
 (iv) terminology (inappropriate for context, inconsistent use), or
 (v) other errors.
 
+IMPORTANT: Your translation must preserve all empty lines and formatting from the original text.
+
 Output only the new translation and nothing else."""
 
     translation_2 = get_completion(prompt, system_message)
@@ -464,6 +467,8 @@ To reiterate, you should translate only this part of the text, shown here again 
 <TRANSLATE_THIS>
 {chunk_to_translate}
 </TRANSLATE_THIS>
+
+IMPORTANT: Your translation must preserve all empty lines and formatting from the original text.
 
 Output only the translation of the portion you are asked to translate, and nothing else.
 """
@@ -614,12 +619,12 @@ Output only the suggestions and nothing else."""
             )
 
         reflection = get_completion(prompt, system_message=system_message)
-        
+
         # 只保留完整反思结果打印
         print(f"\n=== 块 #{i+1} 专家修改建议 ===")
         print(reflection)  # 打印完整的反思结果
         print("="*50)
-        
+
         # 计算建议数量但不单独打印
         suggestions = [s.strip() for s in reflection.split('\n') if s.strip()]
         print(f"\n块 #{i+1} 生成 {len(suggestions)} 条建议")
@@ -686,6 +691,8 @@ to whether there are ways to improve the translation's
 (iii) style (by ensuring the translations reflect the style of the source text)
 (iv) terminology (inappropriate for context, inconsistent use), or
 (v) other errors.
+
+IMPORTANT: Your translation must preserve all empty lines and formatting from the original text.
 
 Output only the new translation of the indicated part and nothing else."""
 
