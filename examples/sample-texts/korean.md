@@ -254,70 +254,46 @@ Room for improvement:
 
 **Practical Recommendation**
 
-For best results, use a combination of Google Translate and Photolate.
+For best results, combine Google Translate with Photolate.
 
-While Google Translate excels at basic menu items, Photolate offers two unique advantages:
+Google Translate works well for basics, while Photolate provides:
+- Accurate translation of traditional Korean dishes
+- Cultural context about ingredients and cooking methods
 
-- Accurate translation of traditional Korean dishes and complex menu descriptions
-- Helpful background information about Korean cuisine and ingredients (e.g., explaining what "bossam" is or describing "gochujang" as a spicy red chili paste)
+Don't miss Photolate's "Background Info" section - it helps you understand what you're ordering.
 
-When using Photolate, don't miss the "Background Info" section below the translation.
-
-![Photolate result showing Korean menu translation with highlighted text detection and cultural background information about Korean dishes](/images/articles/korean/photo-translate_korean_menu.webp)
-
-It provides valuable cultural context about dishes, cooking methods, and ingredients that other translation apps don't offer.
-
-This helps you truly understand each dish before ordering.
+![Photolate result showing Korean menu translation with highlighted text detection and cultural background information](/images/articles/korean/photo-translate_korean_menu.webp)
 
 # The Final Result
 
 **The Challenge**
 
-Our three tests revealed that an excellent Korean image translator needs two key capabilities:
+An excellent Korean image translator needs:
 
 1. Strong OCR (Text Recognition):
-
-- Must accurately extract Korean text from images
-- Handle both printed and handwritten characters
-- Deal with similar-looking Korean characters
-- Work with challenging surfaces and artistic styles
+   - Extract Korean text from various surfaces
+   - Handle printed and handwritten characters
 
 2. Accurate Translation:
-
-- Requires deep understanding of Korean language
-- Needs extensive cultural knowledge
-- Must handle context-dependent meanings
+   - Deep understanding of Korean language and culture
+   - Context-dependent meanings
 
 **The Recommendation**
 
-Based on our tests:
-
 For basic translations:
+- Google Translate and Papago are reliable for simple text
 
-- Google Translate and Papago work well
-- Both are free and reliable for simple text
-
-For complex situations:**<LocalLink to="/" target="_blank">Photolate</LocalLink>** stands out when you need:
-
-- Accurate OCR for challenging text
+For complex situations: **<LocalLink to="/" target="_blank">Photolate</LocalLink>** excels with:
 - Cultural context and background information
-- Understanding of traditional Korean terms
-- Help with dense text like restaurant menus
-
-Try it yourself - it's free to use.
+- Traditional Korean terms
+- Challenging text recognition
 
 | Korean Beverage | Street Art | Restaurant Menu |
 |-----------------|------------|-----------------|
-| ![Photolate interface displaying Korean text detection boxes on green bottle label, showing translations 'Busan', 'Status', 'Raw Makgeolli' with detailed cultural background information about traditional Korean rice wine](/images/articles/korean/photo-translate_korean_drink.webp) | ![Photolate app interface showing Korean text translation with detected text boxes, English translation reading 'It's okay, You've done well today' and cultural context explanation below](/images/articles/korean/photo-translate_korean_street_sign.webp) | ![Photolate result showing Korean menu translation with highlighted text detection and cultural background information about Korean dishes](/images/articles/korean/photo-translate_korean_menu.webp) |
+| ![Photolate interface displaying Korean text detection boxes on green bottle label](/images/articles/korean/photo-translate_korean_drink.webp) | ![Photolate app interface showing Korean text translation with detected text boxes](/images/articles/korean/photo-translate_korean_street_sign.webp) | ![Photolate result showing Korean menu translation with highlighted text detection](/images/articles/korean/photo-translate_korean_menu.webp) |
 
 # Ready for Your Korea Trip?
 
-Language barriers shouldn't stop you from exploring Korean culture. With the right translation app, you can:
-
-- Order with confidence at local restaurants
-- Understand street signs and public notices
-- Learn about traditional Korean drinks and snacks
-
-Try these apps before your trip - practice with Korean text from websites or food packages. This way, you'll be ready to make the most of your Korean adventure.
+With the right translation app, you can confidently navigate Korean restaurants, street signs, and local products. Try these apps before your trip to get familiar with Korean text.
 
 Safe travels! 🇰🇷

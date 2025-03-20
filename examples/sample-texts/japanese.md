@@ -57,6 +57,8 @@ That's why we tested these translation apps in real Japan. No online reviews or 
 
 Here's what we tested:
 
+<br>
+
 | Handwritten Menu | Street Signs | Fortune Slips |
 |:----------------:|:------------:|:-------------:|
 | ![Traditional Japanese restaurant menu board featuring handwritten calligraphy and dish listings in black ink](/images/articles/japanese/hand_written_menu.webp) | ![Traditional Japanese shrine direction sign with black text on white background](/images/articles/japanese/street_sign.webp) | ![Traditional Japanese omikuji fortune paper with detailed calligraphy and predictions](/images/articles/japanese/omikuji.webp) |
@@ -87,12 +89,15 @@ Let's see how our translation tools handle a typical menu board. Game on!
 
 ![Traditional Japanese restaurant menu board featuring handwritten calligraphy and dish listings in black ink](/images/articles/japanese/hand_written_menu.webp)
 
+<br>
 
 | Google Translate | Photolate | OpenL Translate | Yandex Translate |
 |:----------------:|:---------:|:---------------:|:----------------:|
 | ![Google Translate app interface showing Japanese menu translation with highlighted text and English results](/images/articles/japanese/google_hand_written_menu.webp) | ![Photolate interface displaying accurate translation of handwritten Japanese menu items to English](/images/articles/japanese/photo-translate_hand_written_menu.webp) | ![OpenL translation app screen showing Japanese menu text conversion to English](/images/articles/japanese/openl_hand_written_menu.webp) | ![Yandex Translate application attempting to process handwritten Japanese menu text](/images/articles/japanese/yandex_hand_written_menu.webp) |
 
 Let's break down how each translator performed with the menu items:
+
+<br>
 
 | Dish Name | Google Translate | Photolate | OpenL |
 |:---------:|:----------------:|:---------:|:-----:|
@@ -198,6 +203,8 @@ Let's crack a typical street sign pointing to Tsuyuten Shrine. Seems simple, rig
 
 ![Traditional Japanese shrine direction sign with black text on white background](/images/articles/japanese/street_sign.webp)
 
+<br>
+
 | Google Translate | Photolate | OpenL Translate | Yandex Translate |
 |:----------------:|:---------:|:---------------:|:----------------:|
 | ![Google Translate showing basic translation of shrine sign with partial text recognition](/images/articles/japanese/google_street_sign.webp) | ![Photolate providing detailed translation with cultural context of shrine name and services](/images/articles/japanese/photo-translate_street_sign.webp) | ![OpenL's literal translation of shrine sign showing basic directional information](/images/articles/japanese/openl_street_sign.webp) | ![Yandex Translate's incomplete attempt at shrine sign translation](/images/articles/japanese/yandex_street_sign.webp) |
@@ -245,6 +252,8 @@ Imagine holding this paper full of characters. Is it good luck? Bad luck? And wh
 
 ![Traditional Japanese omikuji fortune paper with detailed calligraphy and predictions](/images/articles/japanese/omikuji.webp)
 
+<br>
+
 | Google Translate | Photolate | OpenL Translate | Yandex Translate |
 |:----------------:|:---------:|:---------------:|:----------------:|
 | ![Google Translate's basic interpretation of omikuji fortune showing limited text recognition](/images/articles/japanese/google_omikuji.webp) | ![Photolate's comprehensive translation of omikuji with cultural context and detailed predictions](/images/articles/japanese/photo-translate_omikuji.webp) | ![OpenL's literal translation of omikuji fortune showing basic fortune readings](/images/articles/japanese/openl_omikuji.webp) | ![Yandex Translate's incomplete attempt at translating omikuji fortune text](/images/articles/japanese/yandex_omikuji.webp) |
@@ -269,6 +278,7 @@ Imagine holding this paper full of characters. Is it good luck? Bad luck? And wh
 - Accurate: Nails both meaning and cultural context
 - Interactive: Click to reveal more details if you're curious
 
+<br>
 
 | Default View | Click to reveal more details |
 |:------------:|:----------------------------:|
@@ -287,6 +297,8 @@ Traditional omikuji aren't just "good" or "bad" luck - they have subtle levels a
 After real-world testing across Japan, here's what stands out:
 
 **Text Recognition & Translation Quality**
+
+<br>
 
 | App | Strengths | Weaknesses |
 |-----|-----------|------------|
