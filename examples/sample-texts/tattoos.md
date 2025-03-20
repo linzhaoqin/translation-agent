@@ -1,6 +1,6 @@
 ---
-title: &title "Best way to translate Chinese Tattoos: an Google Translate alternative"
-description: &desc "After some tests about chinese tattoos, we find out that Photolate could give you the fully context understand about the tattoos."
+title: &title "Best way to get Chinese Tattoos meaning: an Google Translate alternative"
+description: &desc "After some tests about chinese tattoos, we find out that Photolate could give you the fully context understand meaning about the tattoos, not just word to word translation."
 date: &date "2025-03-24"
 author: &author "Jane Smith"
 category: 'comparison'
@@ -47,5 +47,7 @@ We will cover some great meaningful chinese tattoos, and give you the result abo
 
 You will instantly find the difference.
 
-# 
+# Arm chinese tattoos for strength
+
+
 
