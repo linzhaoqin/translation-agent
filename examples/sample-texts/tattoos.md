@@ -47,7 +47,11 @@ We will cover some great meaningful chinese tattoos, and give you the result abo
 
 You will instantly find the difference.
 
-# Arm chinese tattoos for strength
+# Arm chinese tattoos
+
+Here is a very good chinese tattoo "花樣年華", it's offen seen in arms.
+
+pic1/2/3
 
 
 

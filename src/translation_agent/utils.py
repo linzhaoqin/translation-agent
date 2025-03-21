@@ -25,7 +25,9 @@ client = anthropic.Anthropic(
 )
 
 MAX_TOKENS_PER_CHUNK = 1000  # 输入分块的最大token数
-MAX_OUTPUT_TOKENS = 8192      # API返回内容的最大token限制
+MAX_OUTPUT_TOKENS = 8192     # API返回内容的最大token限制
+# DEFAULT_MODEL = "claude-3-7-sonnet-20250219"
+DEFAULT_MODEL = "claude-3-5-haiku-20241022"
 # https://docs.anthropic.com/en/docs/about-claude/models#model-comparison-table
 
 
