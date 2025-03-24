@@ -387,5 +387,5 @@ if __name__ == "__main__":
     # translate_to_languages(start_index=20)
 
     # 默认示例：翻译一部分语言
-    translate_to_languages(start_index=10, end_index=15,
+    translate_to_languages(start_index=15, end_index=20,
                            source_locale_code="en", source_file_name="korean.md")
