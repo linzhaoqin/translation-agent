@@ -141,7 +141,7 @@ def save_validation_report(report_content: str):
 def get_completion(
     prompt: str,
     system_message: str = "You are a helpful assistant.",
-    model: str = "claude-3-7-sonnet-20250219",
+    model: str = DEFAULT_MODEL,
     temperature: float = 0.3,
     json_mode: bool = False,
 ) -> Union[str, dict]:
